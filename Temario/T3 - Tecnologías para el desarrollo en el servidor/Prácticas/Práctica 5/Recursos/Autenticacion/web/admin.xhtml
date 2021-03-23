@@ -1,0 +1,20 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                >
+    <ui:define name="title">Página para el usuario administrador</ui:define>
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{controlAutorizacion.usuario.rol == 'ADMINISTRADOR'}">
+                <h1>Usuario administrador</h1>
+                <p>¡¡Bienvenido <h:outputText value="#{controlAutorizacion.usuario.usuario}"/>!!</p>
+
+            </c:when>
+            <c:otherwise>
+                <ui:include src="/WEB-INF/templates/errorAutorizacion.xhtml"/>
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+</ui:composition>

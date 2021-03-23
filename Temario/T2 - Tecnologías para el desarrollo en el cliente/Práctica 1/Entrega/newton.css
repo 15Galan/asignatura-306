@@ -1,0 +1,39 @@
+body {
+  color: darkblue;
+  font-family: arial;
+  background: lightblue;
+}
+
+
+a {
+  color: #AE0000;
+
+  margin-left: 10px;
+
+  text-decoration: none;
+}
+
+
+ul {
+  float: left;
+
+  margin-right: 50px;
+}
+
+
+li {
+  width: 120;
+  height: 30;
+
+  background: white;
+
+  margin-bottom: 1em;
+
+  border-color: lightblue;
+  border-right: 20px solid black;
+
+  list-style:none;
+
+  display: flex;
+  align-items: center;
+}

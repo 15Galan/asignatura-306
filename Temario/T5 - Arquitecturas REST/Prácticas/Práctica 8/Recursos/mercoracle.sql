@@ -1,0 +1,1873 @@
+--------------------------------------------------------
+-- Archivo creado  - martes-mayo-07-2019   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table CATEGORIA
+--------------------------------------------------------
+
+  CREATE TABLE "CATEGORIA" 
+   (	"ID" NUMBER, 
+	"NOMBRE_CATEGORIA" VARCHAR2(50 BYTE), 
+	"IVA" NUMBER(5,2)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CAT_EMPLEADO
+--------------------------------------------------------
+
+  CREATE TABLE "CAT_EMPLEADO" 
+   (	"ID" NUMBER, 
+	"NOMBRE_CARGO" VARCHAR2(50 CHAR)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CLIENTE
+--------------------------------------------------------
+
+  CREATE TABLE "CLIENTE" 
+   (	"DNI" VARCHAR2(9 CHAR), 
+	"NOMBRE" VARCHAR2(20 CHAR), 
+	"APELLIDO1" VARCHAR2(30 CHAR), 
+	"APELLIDO2" VARCHAR2(30 CHAR), 
+	"DOMICILIO" VARCHAR2(100 CHAR), 
+	"CODIGO_POSTAL" NUMBER(5,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table DETALLE
+--------------------------------------------------------
+
+  CREATE TABLE "DETALLE" 
+   (	"PRODUCTO" NUMBER, 
+	"LINEA" NUMBER, 
+	"CANTIDAD" NUMBER, 
+	"TICKET" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table EMPLEADO
+--------------------------------------------------------
+
+  CREATE TABLE "EMPLEADO" 
+   (	"ID" NUMBER, 
+	"DNI" VARCHAR2(9 CHAR), 
+	"NOMBRE" VARCHAR2(20 CHAR), 
+	"APELLIDO1" VARCHAR2(30 CHAR), 
+	"APELLIDO2" VARCHAR2(30 CHAR), 
+	"DOMICILIO" VARCHAR2(100 CHAR), 
+	"CODIGO_POSTAL" NUMBER(5,0), 
+	"TELEFONO" VARCHAR2(15 CHAR), 
+	"EMAIL" VARCHAR2(50 CHAR), 
+	"CAT_EMPLEADO" NUMBER, 
+	"FECHA_ALTA" DATE, 
+	"USUARIO" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table ENTREGA
+--------------------------------------------------------
+
+  CREATE TABLE "ENTREGA" 
+   (	"ID" NUMBER, 
+	"CLIENTE" VARCHAR2(9 CHAR), 
+	"FECHA_ENTREGA" DATE, 
+	"TICKET" NUMBER, 
+	"DIRECCION_ENTREGA" VARCHAR2(100 CHAR)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table EQUIPO
+--------------------------------------------------------
+
+  CREATE TABLE "EQUIPO" 
+   (	"ID" NUMBER, 
+	"TIPO_EQUIPO" VARCHAR2(20 BYTE), 
+	"ZONA_USO" VARCHAR2(50 BYTE), 
+	"MARCA" VARCHAR2(30 BYTE), 
+	"MODELO" VARCHAR2(30 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FACTURA
+--------------------------------------------------------
+
+  CREATE TABLE "FACTURA" 
+   (	"ID" NUMBER, 
+	"CLIENTE" VARCHAR2(9 CHAR), 
+	"NUM_FACTURA" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table FIDELIZADO
+--------------------------------------------------------
+
+  CREATE TABLE "FIDELIZADO" 
+   (	"DNI" VARCHAR2(9 CHAR), 
+	"NUM_CLIENTE" NUMBER, 
+	"N_TARJETA" NUMBER, 
+	"PUNTOS_ACUMULADOS" NUMBER, 
+	"TELEFONO" VARCHAR2(15 CHAR), 
+	"EMAIL" VARCHAR2(50 CHAR)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table HISTORICO_OFERTA
+--------------------------------------------------------
+
+  CREATE TABLE "HISTORICO_OFERTA" 
+   (	"PRODUCTO" NUMBER, 
+	"FECHA_INICIO" DATE, 
+	"OFERTA" NUMBER, 
+	"FECHA_FIN" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table HISTORICO_PRECIO
+--------------------------------------------------------
+
+  CREATE TABLE "HISTORICO_PRECIO" 
+   (	"PRODUCTO" NUMBER, 
+	"FECHA" DATE, 
+	"PRECIO" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table IVA
+--------------------------------------------------------
+
+  CREATE TABLE "IVA" 
+   (	"TIPO_IVA" FLOAT(126), 
+	"PORCENTAJE" NUMBER(3,0), 
+	"DESCRIPCION" VARCHAR2(100 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LOTE
+--------------------------------------------------------
+
+  CREATE TABLE "LOTE" 
+   (	"ID" VARCHAR2(10 CHAR), 
+	"MOBILIARIO" NUMBER, 
+	"PRODUCTO" NUMBER, 
+	"FECHA_CADUCIDAD" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table MOBILIARIO
+--------------------------------------------------------
+
+  CREATE TABLE "MOBILIARIO" 
+   (	"ID" NUMBER, 
+	"CONSTRUCCION" VARCHAR2(50 CHAR), 
+	"NOMBRE_MOBILIARIO" VARCHAR2(50 CHAR), 
+	"DESCRIPCION" VARCHAR2(250 CHAR), 
+	"CAPACIDAD" NUMBER, 
+	"EN_USO" VARCHAR2(1 CHAR), 
+	"PASILLO" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table NOMINA
+--------------------------------------------------------
+
+  CREATE TABLE "NOMINA" 
+   (	"FECHA_EMISION" DATE, 
+	"IMPORTE_NETO" NUMBER, 
+	"EMPLEADO" NUMBER, 
+	"IMPORTE_BRUTO" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table OFERTA
+--------------------------------------------------------
+
+  CREATE TABLE "OFERTA" 
+   (	"ID" NUMBER, 
+	"TIPO_OFERTA" VARCHAR2(100 CHAR), 
+	"DESCRIPCION" VARCHAR2(500 CHAR)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PASILLO
+--------------------------------------------------------
+
+  CREATE TABLE "PASILLO" 
+   (	"ID" NUMBER, 
+	"DESCRIPCION" VARCHAR2(20 BYTE)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PRODUCTO
+--------------------------------------------------------
+
+  CREATE TABLE "PRODUCTO" 
+   (	"CODIGO_BARRAS" NUMBER, 
+	"OFERTA" NUMBER, 
+	"DESCRIPCION" VARCHAR2(500 CHAR), 
+	"STOCK" NUMBER, 
+	"EXPOSICION" NUMBER, 
+	"TEMPERATURA" NUMBER, 
+	"PESO_NETO" NUMBER, 
+	"CATEGORIA" NUMBER, 
+	"METROS_LINEALES" NUMBER, 
+	"PRECIO_ACTUAL" NUMBER(6,2), 
+	"PASILLO" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PROVEE
+--------------------------------------------------------
+
+  CREATE TABLE "PROVEE" 
+   (	"PROVEEDOR" NUMBER, 
+	"PRODUCTO" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PROVEEDOR
+--------------------------------------------------------
+
+  CREATE TABLE "PROVEEDOR" 
+   (	"ID" NUMBER, 
+	"NIF" VARCHAR2(9 CHAR), 
+	"NOMBRE_PROVEEDOR" VARCHAR2(50 CHAR), 
+	"RESPONSABLE_EMPRESA" VARCHAR2(50 CHAR), 
+	"TELEFONO" VARCHAR2(15 CHAR), 
+	"EMAIL" VARCHAR2(50 CHAR)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table REPONE
+--------------------------------------------------------
+
+  CREATE TABLE "REPONE" 
+   (	"EMPLEADO" NUMBER, 
+	"PASILLO" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table RETENCION
+--------------------------------------------------------
+
+  CREATE TABLE "RETENCION" 
+   (	"ID" NUMBER, 
+	"NOMBRE" VARCHAR2(50 CHAR)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table RETENCIONES
+--------------------------------------------------------
+
+  CREATE TABLE "RETENCIONES" 
+   (	"CAT_EMPLEADO" NUMBER, 
+	"RETENCION" NUMBER, 
+	"PORCENTAJE" NUMBER(5,2)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table REVISION
+--------------------------------------------------------
+
+  CREATE TABLE "REVISION" 
+   (	"FECHA" DATE, 
+	"CODIGO_BARRAS" NUMBER, 
+	"PASILLO" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table SUPERVISA
+--------------------------------------------------------
+
+  CREATE TABLE "SUPERVISA" 
+   (	"EMPLEADO" NUMBER, 
+	"EQUIPO" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TICKET
+--------------------------------------------------------
+
+  CREATE TABLE "TICKET" 
+   (	"ID" NUMBER, 
+	"FECHA_PEDIDO" DATE, 
+	"EMPLEADO" NUMBER, 
+	"PUNTOS" NUMBER(6,0), 
+	"FIDELIZADO" VARCHAR2(9 CHAR)
+   ) ;
+REM INSERTING into CATEGORIA
+SET DEFINE OFF;
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('25','Comida Internacional','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('26','Productos importados','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('32','Mascotas','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('44','Suplementación','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('45','Deportes','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('50','Legumbres','1');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('51','Dulces','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('46','Reposteria','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('1','Panadería Básica','1');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('2','Bebidas no alcohólicas','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('3','Bebidas alcohólicas','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('4','Congelados','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('5','Carnicería','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('6','Charcutería','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('7','Lácteos','1');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('8','Pescadería','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('9','Imagen y sonido','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('10','Videojuegos','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('12','Bollería','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('27','Productos Veganos','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('33','Libros','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('34','Mobiliario','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('40','Papelería','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('41','Juguetes','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('11','Frutas','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('21','Bricolaje','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('22','Flores y Plantas','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('23','Parafarmacia','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('24','Belleza','1');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('35','Embutidos','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('0','Pastas','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('69','Salas','1');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('13','Verduras','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('14','Conservas','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('15','Comida Preparada','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('16','Refrescos','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('17','Aperitivos','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('18','Cuidado Personal','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('19','Limpieza','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('20','Snack','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('28','Aceites','2');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('29','Alimentos animales','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('30','Salsas','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('31','Condimentos','1');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('39','Electronica','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('55','Electrodomesticos','3');
+Insert into CATEGORIA (ID,NOMBRE_CATEGORIA,IVA) values ('87','Juegos de mesa','3');
+REM INSERTING into CAT_EMPLEADO
+SET DEFINE OFF;
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('12','Charcutero');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('13','Azafata de Ventas');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('14','Frutero');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('15','Mantenimiento');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('16','Reponedor');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('50','Repartidor');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('51','Repostero');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('38','Relaciones Publicas');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('1','Director');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('2','Supervisor');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('3','Cajero-Reponedor');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('4','Puesto Base');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('21','Becario');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('5','Limpieza');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('6','Carnicero');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('7','Mozo de almacen');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('9','Auxiliar administrativo');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('10','Responsable ventas');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('11','Responsable RRHH');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('17','Seguridad');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('30','Atención al cliente');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('8','Pescadero');
+Insert into CAT_EMPLEADO (ID,NOMBRE_CARGO) values ('23','Panadero');
+REM INSERTING into CLIENTE
+SET DEFINE OFF;
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('67867433','Hannae','Tourug',null,'C/Trepadores 15-1G. ','29001');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('46563277','George','Rice',null,'C/Bellota 65-1G. ','14038');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('78678644','Jaime','Villanueva','Arenas','C/Alcornocales 5-1G. ','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('75674321','Raziz','Afilal',null,'C/Sierra Tejeda 55-1G. ','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('25756456','Jesus','Neira','Cintado','C/Linares 35-1G. ','29001');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('25423411','Pedro','Melendez','Contado','C/Pintores 35-1G. ','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('34567567','Carlos','Garzon','Trujillano','C/Curtidores 17-1G. ','29008');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('97896753','Sergio','Rivas','Trevijano','C/Carpinteros 46-1G. ','29008');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('45645221','Maximo','Leon','Pi','C/Panaderos 13-1G. ','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('34545346','Esther','de Diego','Blasco','C/Bordadoras 63-1G. ','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('86785432','Laura','Espinosa','Fuente','C/Farola 25-1G. ','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('45345311','Angel','Montero','Puig de Casamayor','C/Lomas 33-1G. ','26070');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('43234222','Marlon','Mesa','Jimenez','C/Ronda 56-1G. ','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('54634521','Alejandra','Oliveira','Jimenes','C/Cazalla 33-1G. ','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('34234244','Zinovia','Petrova',null,'C/Salamanca 45-1G. ','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('54354355','Arcadio','Armada','Pedrosa','C/Granada 175-1G. ','29008');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('11087825','ANTONIO','OUAHABI',null,'Avenida Juan Sebastián Elcano, 117 Pedregalejo','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('31403229','CAROLINA','PEREZ','AGUAVIVA','Cortina del Muelle, 1','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('33028858','PABLO','PINTO','ANDRES','Casas de Campos 3','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('13504134','AITOR','RAMOS','ARAGÓN','Cuarteles, 66 - Edf.Cantabria','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('72242643','MARIA ARACELI','RANEA','BURGUEÑO','Atarazanas, 19','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('26651441','JOSE DAVID','RIOS','CADENA','Somera, 8','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('63073113','ANTONIO','RODRIGUEZ','CANTOS','Estación VIALIA c / Heroe de Sostoa, 2','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('64967021','ANGEL JESUS','ROMERO','CAÑETE','Urbanización Guadalmina Alta. de Granadillas s/n','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('14156094','DANIEL','ROMERO','CARRASCO','Paseo de Sancha, 17','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('33916883','MARIA DE LOS ANGELES','ROMERO','CARRILLO','Avenida de Velázquez, 212','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('66348989','ALBERTO JESUS','RUIZ','CARRION','Cister, 10','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('11569523','ALBERTO','SAEZ','CAZORLA','Córdoba, 7','14038');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('40302286','GONZALO','SANTOS','CHICA','Ramos Carrión, 38','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('16891547','IVAN','SAUZA','CORBACHO','Carretera-Colmenar Km. 548,5','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('30201890','BORJA','SILVA','DELGADO','Pasaje de Amaranto, 1','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('20058694','JOSE ANTONIO','SUAREZ','DIAZ','Álamos 27','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('59676990','ASMAE','TORRES',null,'Sancha de Lara, 7','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('75182393','MANUEL','VALVERDE','ESTEPA','Salitre, 53','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('7048189','JUAN DE DIOS','VILLA','ESTRELLA','Avenida Juan Sebastian el Cano, 103','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('69126079','MANUEL','GUERRERO','FERNANDEZ','Avenida Comandante Benítez, 5','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('48562250','ALEJANDRO','HINDLEY','FERNANDEZ','Avenida de Velazquez, ','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('62512427','VICTOR HUGO','MARTIN','FLORIDO','Carretera de Colmenar, s/n','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('38260925','TATIANA','MAZGELIS','PEREZ','Horacio Quiroga (Area Comercial Valdicio)','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('47345210','JORGE','MESTANZA','GARCIA','Pasillo Guimbarba, 5','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('69579606','EDUARDO','MORENO','GARCIA','Paseo Marítimo El Pedregal, 64','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('30515508','ALVARO','MUÑOZ','GARCIA-FAURE','Córdoba, 7','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('44743361','CRISTINA','ORTIZ','GOMEZ','Avenida Cánovas del Castillo, 1','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('59632524','JOSE CARLOS','PALOMINO','ARGUILEA','Avenida Río Guadalmedina, s/n.','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('66377991','SAMUEL','PRANDI','ARIZA','Mármoles, 6','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('5404953','CARLOS','RAISSOUNI',null,'A 10 Km. De Malaga - Aptdo. de Correos 324','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('7238181','LUKAS','RAMIRO','CABALLERO','Castillo de Gibralfaro, s/n','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('34404881','PABLO','RIVERO','CORTECERO','Avenida Juan Sebastian Elcano 199','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('47376089','MIGUEL ANGEL','ROBLES','DOMINGUEZ','Molina Lario, 20-22','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('68597223','ADRIAN','ROCHE','ECHEVARRI','Paseo Marítimo Antonio Machado, 10','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('58494625','DANIEL','RODRIGUEZ','ESCRIBANO','Conde de Ureña, 58','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('15940923','ALFONSO','RUIZ','ESCUDERO','Paseo de Sancha, 35','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('50178805','SERGIO','RUIZ','ESTEPA','Avenida de Velázquez, 126','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('40236024','JUAN','RUIZ','FERNANDEZ','Olmos 10','14002');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('28708690','ADRIAN','RUIZ','FUERTES','Nicasio Calle, 5','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('7109544','BRIAN','SALIDO','GARCIA','Acacias de Guadalmar, 153','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('7779744','MIGUEL ANGEL','SANCHEZ','GOMEZ','Héroe de Sostoa, 17','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('58144507','ISABEL','SANCHEZ','GOMEZ','Espacio 50','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('61306528','ELOY','SANCHEZ','GONZALEZ','Marqués de Larios, 2','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('41720934','RUBEN','SANTIAGO','GONZALEZ','Casas de Campos, 17','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('41754135','RAFAEL','SUAREZ','GONZALEZ','Ferraz, 34 - 36','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('58785055','RUBEN','TORRALVO','HARO','Trinidad Grund, 13','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('17647730','FELIPE','TRILLO','JIMENEZ','Carretería, 6-10','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('27921947','ANTONIO JESUS','VALENCIA','JIMENEZ','Avenida de la Aurora, 25','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('4837297','CRISTIAN','VAZQUEZ','LEIVA','Moby Dick, 2','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('34452709','ADRIÁN','VELASCO','LLORET','Paseo de Sancha, 22','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('21012656','ENRIQUE','ZAHTI',null,'Bandaneira, 6 Urbanización El Atabal. Puerto de la Torre','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('57535322','IKER','LUQUE','ROBLES','Pacífico, 44','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('57445941','FRANCISCO JOSE','MARQUEZ','ROCHE','Pasillo Santa Isabel, 12','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('28179524','JOAQUIN','MARQUEZ','RODRIGUEZ','Cuba 1 y 3','29017');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('62849645','CARLOS','MARTIN','RUIZ','Canales, 8','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('36982815','REMEDIOS MARIA','MARTIN','RUIZ','Pasillo Santa Isabel, 12','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('22903027','PEDRO','MARTIN','RUIZ','Cuba 1 y 3','6070');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('14785585','CARLOS EDUARDO','MARTINEZ','RUIZ','Canales, 8','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('28294639','AHMED','MEDINA','SALIDO','Su casa','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('29707760','CRISTIAN','MIÑAMBRES','SANCHEZ','Pasillo Santa Isabel, 12','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('70084540','ADRIÁN','MONTIEL',null,'Cuba 1 y 3','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('12127891','FERNANDO','MORALES',null,'Canales, 8','29015');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('31333317','JAIRO','MUÑOZ',null,'Su casa','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('34258348','IKER','NIETO','SANCHEZ','Su casa','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('12345678','Maria','Fernandez','Fernandez','Plaza Redonda 3-2B','29856');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('25836914','Homer','Jay','Simpson','Calle de la Piruleta, Casa Feliz','99985');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('53138723','Gary ','Duncan',null,'4262 West Fork Drive','33024');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('56987412','Petunia','Dursley',null,'4 Privet Dirve','59684');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('56328497','Bilbo','Bolson',null,'Bolson Cerrado','12345');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('58695869','Philip J.','Fry',null,'Planet Express, Nueva Nueva York','12321');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('57416432','PEPE','RAMIREZ','RODRIGUEZ','C/Latina 17-3G','29901');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('46587256','MARIA','MARTELL','DE MILAGRO','Calle Tampa, 2','29006');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('23242526','SERGIO','OLAV','GUSANER','C/ Noruega, 91','88190');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('91378246','Rosa María','Herrera','Jiménez','Marea Baja, 3','29006');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('77189233R','Carmen','Rodríguez','Calvo','C/ Cuarteles, 7','29009');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('25073274Q','Manuel','Santos','Torres','Avenida de la Aurora, 4','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('71213634E','Yosef','Berrios','Echevarría','C/Urzáiz, 31','44000');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('67503021E','Hugolina','Carbajal','Rubio','C/ Libertad, 99','5200');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('84607312H','Yone','Valverde','Sandoval','C/ Eras, 12','28739');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('48352745Y','Junior','Sánchez','Rolón','Paseo Junquera, 53','12499');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('9586245','BORJA','PEREZ','ROMERO','C/ Baltanás, 18','48970');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('85745982','BLASA','JIMENEZ','ARGAMASILLA','C/ Alcafran, 23','13440');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('28736419A','José','Ríos','Rey','Avenida Carlos Haya, 50','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('77336699J','Blas','de Lezo','Y Olavarrieta','Paseo de la Farola, 11','29016');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('25748963','Jose Luis','Rodriges','Mendez','C/Velazquez','16553');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('55555555A','Pepe','fontalvez','cuesta','C/ Pepillo, 23','12398');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('76749010B','Juan Miguel','Urbano','López','Málaga','29007');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('1932186','FERNANDITO','KIT','KAT','INFIERNO','66666');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('77675345','HAKIM','KILO','GABBANA','AV. EL RIFF','28956');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('678678697','MIGUE','EL','MAQUINA','AV. LA TUNARA','25432');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('89779080','ELMINI','EL','MINI','SAN JUAN DE DIOS','23489');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('7679809','JOSEDA','DE','CARGLASS','TU TALLER MAS CERCANO','65798');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('79122885S','ALBERTO','ALONSO','GOMEZ','CAMINO DE COIN 23','29640');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('0898767','CECILIO','G','KING','Niggi are you bless','27890');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('78568786','RAMON','EL ','VANIDOSO','CARCEL DE CARAVANCHEL','86675');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('76547897','FALIYO','SAN','ROQUE','PA'' QUE HAIGA LUJOS','87539');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('8976654','WELLINTON','QUIW',null,'REPUBLICA DOMINICANA','8964');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('89674438','PRIMO','LUCA',null,'REPUBLICA DOMINICANA','75644');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('123456789','Juan','Sanchez','Benitez','Calle Carreteria, 27','29000');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('61549723','MANUEL','PEÑA','MORALES','Plaza José Bergamín, 6','29007');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('36412365','MANUELA','MARTÍNEZ','SARCIAT','C/ Dámaso Delgado, 23, 1','14900');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('77491718Q','Paco Francisco','García','García','Calle Atún, 8','29004');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('54312218P','Jose Pepe','Martín','Martínez','Calle Salmorejo, 21','29008');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('78462401','ANTONIO','RUIZ','LOPEZ','C/ Arrabal, 27','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('58196742','ANA','MOLINA','FERNANDEZ','C/ Quevedo, 3','29007');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('19478236','JULIAN','PARDO','MORALES','C/ Valencia, 52','29450');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('45678876I','ALBERTINO','MARTÍNEZ','PUIG','C/ Floreria, 23','29631');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('34567765E','JOSÉ LUIS','RODRÍGUEZ','MARTÍN','C/ Velarde, 4','29631');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('77777777H','MARCOS','LÓPEZ','RAMÍREZ','C/ Madrid, 35','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('94781241','Andres','Gomez','Reyes','C/ Olmos, 20','29384');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('88215412F','Richard','Rabbit',null,'C/ Bismuto, 88','88214');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('44563190O','William','Peterson','Locked','Bulevar Louis Pasteur, s/n','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('45632275R','Sixth','Meeren','Jackson','C/Uranio, 22','29190');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('23458888F','Anthony','Skill',null,'C/ Forense, 35','29108');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('49206874O','August','Greenson',null,'C/ Empinada, 10','29004');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('34981255P','John','Knitter',null,'Castillo de Gibralfaro, s/n','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('76877152','ALEJANDRO','NIETO','MOLINA','Pasillo del Matadero, 23','29004');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('25348756','JUAN','PEREZ','ROMERO','C/ Goya, 34','29002');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('67564534','ROMAN','PASTUSHENKO',null,'C/ Marbella, 2','29384');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('23874567','ABEL','CABRERA','REAL','C/ Zambria, 45','23045');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('59687546','ESTELA','LOPEZ','ROSA','Calle Brusoto, 6','29006');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('45696485','CRISTINA','VEGA','PEREZ','Calle Brújula, 4','29006');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('89658745','LUCAS','ABREU','CABALLERO','Av. de Carlos Haya, 15','29006');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('15652365','PAULA','MARTELL','PEREZ','Calle Franz Kafka, 45','29006');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('48965845','LAURA','DEL MAR','JIMENEZ','Calle Monterrey,17','29006');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('98745632','Antonio','Ruiz','Castillo','C/ Ildefonso, 12','13214');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('59645826','JUAN','GONZALEZ','GUTIERREZ','Calle Leopoldo Lugones, 15','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('48965215','LUCIA','JIMENEZ','SANCHEZ','Calle París, 2','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('35678412','MARINA','LOPEZ','VEGA','Camino San Alberto, 14','29006');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('15263987','JORGE','MORENO','MARTELL','Calle Mero, 4','29006');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('54236541','Maria','Luque','Rosa','Tirso de Molina, 67','12258');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('37827084L','Carmen','Reyes','Martín','C/Pez Dorado, 1','29620');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('53743352','Adrián','Moreno','Núñez','C/Lucero 55','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('16374314','Manuel','López','Reviriego','Álamos 32','29006');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('87697603H','Isaac','Clarke',null,'C/ Ishimura, 3','2446');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('45689876C','Marina','Aguado','López','C/ San Martín, 2','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('12378394T','Alejandro','Pérez','Pérez','Plaza del fuerte , 22','29007');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('38940293','Pedro','Lobillo','Becerra','Pasaje San Marcelino, 6','11311');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('12345679','PEPE','GARCÍA','GÓMEZ','C/ Saludos, 27','29700');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('22222222','Nicolás','Fernández',null,'Paseo del Altramuz','29020');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('12345123','La Rana','Gustavo',null,'Paseo de la Horquilla','30020');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('52364785','Yano','Cuentacuentos',null,'Calle de la manteca','30320');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('56765432','IVAN','GARCIA','RODRIGUEZ','C/ Sevilla, 3','29320');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('78293847','JOSE','MANUEL','BENITEZ','C/ Cordoba, 5','29348');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('67898765','ANTONIO','MERIDA','GARCIA','C/ Bellota, 32','29383');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('18293847','MARIA','SANCHEZ','AGUILAR','C/ Palmeno, 12','29384');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('28374857','MANUEL','BURGEÑO','RODRIGUEZ','Plaza Santa Marta, 9','29384');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('28394857','ANDREA','SANCHEZ','SANCHEZ','Pasillo Gloria, 14','29348');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('18293048','MANUEL','AZANA','AGUILAR','C/ Olmos, 16','29384');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('29384758','PACO','GUTIERREZ','NARVAEZ','C/ Linares, 18','29382');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('29384859','ANTONIO','SANZ','GARCIA','Plaza Damasco, 13','29348');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('19283748','ROSANA','JIMENEZ','MORALES','C/ Ronda, 15','29322');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('19203948','MANUEL','GARCIA','PEREZ','C/ Santa Marta, 12','29383');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('16374859','PACO','SILVA','NARVAEZ','C/ Estepa, 14','29333');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('11118374','JOSE','RIVAS','GARCIA','Plaza de la Constitución, 14','29322');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('48596879','MARIA','AGUILAR','LEON','C/ Malaga, 22','38443');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('11899872','NOELIA','MARQUEZ','PEREZ','C/ Madrid, 33','23345');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('29485760','ANTONIO','SILVA','FLORIDO','Aveniza Reina Victoria, 8','29837');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('18495023','EMILIO','RIVAS','CABALLERO','C/ Marmoles, 8','26635');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('33849568','ROSARIO','PETROVA','SANCHEZ','C/ Linares, 17','28374');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('56182666','CARMEN','MARQUEZ','ESCUDERO','C/ Farola, 12','26354');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('38493346','CARLOS','LEIVA','GARCIA','C/ Sevilla, 22','27384');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('71335488','PERICO','LOS','PALOTES','C/ La Huerta, 125','29620');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('26258954D','ANTONIO','BALLESTERO','JIMENEZ','Calle Rafaela, 9','29009');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('25804135C','AGUSTIN','PEREZ','RODRIGUEZ','Calle Pepehillo, 10','29040');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('24058015V','ANDREA','MARTIN','BALLESTERO','Calle Rosal, 62','29045');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('26050142P','DOLORES','FUERTES','de BARRIGA','Avda Andalucia, 35','29054');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('26050418G','AITOR','MENTA','GARCIA','Calle Torcal, 75','29401');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('77238546','DELPO','ROMAN','OLEA','C/ ARROYO TOTALAN, 4','29720');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('77235656','MARIO','PEREZ','RUIZ','Tamadaba, 7','29067');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('77777777X','SECO','BOY','AKA LANADELREY','Paseo los Curas, 17','29077');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('77968545Y','ERNESTO','ENTRAMBASAGUAS','DELGADO','Avenida los Pistos, numero pi, 2º A derecha','29014');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('37591728E','Cepeda','Calvo',null,'Calle Pantene','29054');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('31415926P','Carlos','Ruiz','Zafon','C/España, 36','25034');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('31415926G','Brandon','Sanderson','De la Bodega','C/Cosmere, 3','25036');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('31415926T','Jose','Boton','Viejo','C/Benjamin, 4','26789');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('24589902','MAURICIO','COLMENERO','GUZMAN','C/ Rio de las pasadas, 69','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('27484949','SERJ','TANKIAN',null,'C/ Caja Magica, 23 ','29400');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('64368362','LUIS','GENOVES','CASTILLO','Calle del Manzano, 34','29604');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('77663509','Miguel','Elc','Rack','C/Amor, 12 ','29690');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('48721399','LUCAS','RAMIREZ','GONZALES','C/ Princesa, 4','29740');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('74910244','ANDREA','GOMEZ','ZAYAS','C/ Riveiro, 23','29700');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('67108864','Sergio','Ramos ','Rubio','C/  Utrera, 10','41001');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('23459876','Carmen ','Cruz ','Díaz','C/ Ricardo Soriano, 11','29604');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('16777216','Daniel','Monterroso','De Tomás','Avenida de Mijas, 4','29649');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('33554432','Javier','Torres','Ojeda','C/ Matriz, 1','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('81924096','Antonio','Fernández','Arias','C/ Película','29010');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('16655361','Roberto','Navarro','Peláez','C/ Rosa de los vientos','29609');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('26214432','María ','González','Bermúdez','Calle Albéniz','29604');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('23237655T','Manolito','Gafotas','Carrión','C/ Carabanchel, 24','28310');
+Insert into CLIENTE (DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL) values ('79089735R','Donatelo','Pasta','Fresca','C/ Alcantarilla, 1','29000');
+REM INSERTING into DETALLE
+SET DEFINE OFF;
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('111111','1','2','19');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('1112221','2','1','19');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('2637289','3','4','19');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('22234','4','1','19');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('123456','1','4','248');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('6491793650270','2','3','248');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('111111','1','2','1');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('12345','2','4','1');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('1548754','3','2','1');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('1','0','2','78');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('2','1','4','78');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('101','2','1','78');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('111114','3','3','78');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('3','4','20','78');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('1818729','3','1','10');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('3534534','3','1','10');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('6666666','3','3','10');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('8480000720145','1','4','21');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('42515756','2','6','21');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('6491793650270','1','2','22');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('1232343','2','1','22');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('654634','1','1','50');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('22234','1','4','2');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('18374','2','2','2');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('18374','1','4','3');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('12345','2','5','3');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('18374','1','7','4');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('18374','1','2','5');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('22234','1','4','6');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('12318','3','10','16');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('12321','3','10','16');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('12322','1','15','16');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('654634','0','1','23');
+Insert into DETALLE (PRODUCTO,LINEA,CANTIDAD,TICKET) values ('62062062','0','2','100');
+REM INSERTING into EMPLEADO
+SET DEFINE OFF;
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('1','25748955','Guillermo','Villanueva','Pedraza','C/Rueda 75-1G. ','14038','617898999','gvillanueva@meroracle.es','3',to_date('30/08/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('2','87906454','Manuel','Fernandez','Ortega','C/Latina 15-2G. ','29901','617568999','mfernandez@meroracle.es','3',to_date('30/08/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('3','87675655','Justo','Iglesias','Aramillo','C/Mirolta 25-1G. ','29067','617886999','jiglesias@meroracle.es','3',to_date('30/08/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('4','73635423','Rafael','Villanueva','Galvez','C/Madrid 45-1G. ','29901','617884999','rvillanueva@meroracle.es','3',to_date('29/08/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('5','73143332','Maria Jose','Lillo','Gamez','C/Paris 75-1G. ','29008','616368999','mlillo@meroracle.es','3',to_date('29/08/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('6','23456456','Victoria','Mayordomo','Toro','C/Quito 75-1G. ','29067','628898999','vmayordomo@meroracle.es','3',to_date('29/08/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('7','67856744','Jose','Gil','Hilo','C/Tanger 5-1G. ','29067','628898999','jgil@meroracle.es','3',to_date('29/08/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('8','23423424','David','Alarcon','Garcia y Muntaner','C/Fuente Paz 25-1G. ','29901','619238999','dalarcon@meroracle.es','1',to_date('10/09/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('9','67867888','Isidro','Villanueva','Fernandez','C/Cornisa 35-1G. ','29001','617857999','ivillanueva@meroracle.es','2',to_date('10/09/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('10','65565643','Nicolas','Bersabe','Alba','C/Barqueros 45-1G. ','29067','952656969','nbersabe@meroracle.es','2',to_date('10/09/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('11','97800676','Carlos Alberto','Acosta','Castilla','C/Zapateros 55-1G. ','29015','952398999','cacosta@meroracle.es','3',to_date('10/09/15','DD/MM/RR'),'pepito');
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('12','45645644','Rodrigo','Castro','Picon','C/Rodaderos 13-1G. ','29067','952893299','rcastro@meroracle.es','3',to_date('05/09/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('13','23423332','Benjamín','Ruiz','Palacio','C/Italia 32-1G. ','29067','951898999','bruiz@meroracle.es','3',to_date('05/09/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('14','56756777','Gema','Jimenez','Larios','C/Filipinas 134-1G. ','29067','952898119','gjimenez@meroracle.es','6',to_date('05/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('15','86734723','Salvador','Castillo','Heredia','C/Mosqueteros 32-1G. ','29067','952778999','scastillo@meroracle.es','6',to_date('05/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('16','45645666','Elena','Romero','Torao','C/Seriosi 25-1G. ','29067','678898999','eromero@meroracle.es','6',to_date('05/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('17','25744665','Enrique','Silva','Cervantes','C/Capital 15-1G. ','29008','634898999','esilva@meroracle.es','7',to_date('05/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('18','34558955','Maria Elena','Ortiz','Montoya','C/Presa 72-1G. ','29067','656798999','mortiz@meroracle.es','7',to_date('05/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('19','45634322','Samir','Makluofi',null,'C/Peregrino 32-1G. ','29067','687698999','smakluofi@meroracle.es','7',to_date('05/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('41','77889248','Abel','Muñoz','Rivas','C/ Puerto de la Torre, 19','29190','667898348','abelmr@mercoracle.es','1',to_date('26/07/88','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('87','89868584','Jose Ignacio','Martin','Codes','C/Latina 18-8G','29901','691811888','ignaciomc8@mercoracle.es','3',to_date('08/08/18','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('45','25089341R','Antonio José','Pérez','Galdós','C/ Trafalgar, 5','29003','653235120','ajperez@mercoracle.es','3',to_date('04/02/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('46','26047382S','Carla','Morales','Bueno','C/ Ollerías, 14','29010','677773625','carlamb@mercoracle.es','12',to_date('05/05/14','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('47','77162635J','Miriam','Alonso','Díaz','C/ Miranda, 11','29006','617263546','miriamalonso@mercoracle.es','11',to_date('01/04/18','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('54','48352745','Crescencio','Aragón','Tejeda','Cercas Bajas, 54','8140','737488994','CrescencioAragona@mercoracle.es','1',to_date('18/03/19','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('55','56030114','Keila','Paredes','Castellanos','C/ Quevedo, 67','15189','737126527','KeilaParedes@mercoracle.es','2',to_date('01/02/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('171','771822820','Mario','Rodriguez','Aramburu','C/Pricna 7 ','29002','633298745','stephen7curry@mercaoracle.es','7',to_date('06/04/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('96','76589734','Apu','Nahasapee','Mapetilon','C/ San Springfield','28754','605897286','apusevadelossimpson@mercoracle.es','3',to_date('24/06/05','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('92','74125896','Rosario','Parrales',null,'C/ Mirador de Montepinar, 41','29011','654987321','parrales@mercoracle.es','8',to_date('13/03/19','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('333','53681545B','Pedro','Alcantara','Rodriguez','C/ TTM, 36','28564','625456185','pedrico@gmail.com','30',to_date('25/02/18','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('852','56987458C','Valerico','Rodriguez','Cuesta','C/ Arriada, 23','18546','685479213','Valero@gmail.com','3',to_date('12/03/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('205','25558943','Jose','Perez','Perez','Carlos Haya','29008','672037083','Perez@gmail.com','2',to_date('12/03/18','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('206','2666883','Pedro','Bravo','Galvez','Teatinos','29006','622087033','Perez@gmail.com','3',to_date('08/04/18','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('23','96376129','Francisco','Martinez','Duran','C/ El agua 21-2','14900','698753216','fduran@mercoracle.es','7',to_date('06/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('20','31026628','Juan ','Roldan','Gomez','C/ Hermanos Alvarez Quintero 3-2-2C','14900','625786321','jurolgo@mercoracle.es','3',to_date('06/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('21','69875963','Nadia','Williams',null,'C/Blas Infante 3-2','29010','634982561','nadiawill@mercoracle.es','4',to_date('06/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('22','36985169','Teresa','Ramirez','Sañudo','C/San Genaro 12-2-3','28001','621598367','teresa233@mercoracle.es','4',to_date('06/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('24','64345553','Ignacio','Pascual','Pino','C/Domingo Herrera 3','29700','345675432','ignacio@mercoracle.es','5',to_date('09/08/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('26','12345678','Manolo','Chocolatero',null,'C/ Rodolfo Master 9-9','23455','987654398','manolo@mercoracle.es','5',to_date('08/03/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('60','72896531','Isabel','Arias','Fuente','C/ Carlos III, 21','29007','683275109','isabelarias@mercoracle.es','5',to_date('01/09/18','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('61','26948513','Manuel','Latre','Coronado','C/ Sorolla, 65','29007','633810704','manuellatre@mercoracle.es','6',to_date('01/11/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('25','69584152','Sergio','Gonzalez','Alonso','C/ Girasoles 10-2A','28021','648521548','sergioga@mercoracle.es','5',to_date('10/10/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('27','54859658','Juan Manuel','Jaime','García','C/ Almansa 3-3B','25036','63522563','juan27@mercoracle.es','5',to_date('10/10/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('28','11109097','Alejandro','Gullon','Sierra','C/ Lempre 2, 2A','29004','661241100','a@mercoracle.es','2',to_date('09/10/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('37','23874567','Abel','Cabrera','Real','C/ Zambria, 45','23045','602863726','abelrealrealZ@gmail.com','6',to_date('04/10/18','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('39','45364837','Ale','Santana','Dominguez','C/Dámasoeus, 2','29045','673113456','ales@mercoracle.es','1',to_date('07/12/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('40','45364839','Pepe','Suarez','Borjia','C/Dual, 2','29034','673666444','pepes@mercoracle.es','2',to_date('29/12/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('42','987564132','Lucia','Perez','Ortuño','C/Agua,98','24569','648974232','luperor@mercoracle.es','2',to_date('18/03/19','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('43','65465413
+','Jose Andres','Quirante','Vegas','C/ San Nicolas, 98','98741','987456325','jaquirante@mercoracle.es','6',to_date('18/03/18','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('58','98626213M','Francesco','Virgolini',null,'C/ Piston, 7','29620','654839217','francesco@mercoracle.es','15',to_date('14/01/19','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('100','25748956','Antonio','Pérez','Gil','C/ Málaga, 12','29374','645557834','tony34@mercoracle.es','5',to_date('01/03/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('48','72849281C','Catalina','Núñez','Gil','C/ San Martín, 4','29010','666278736','Canugil@mercoracle.es','2',to_date('28/03/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('49','83928485D','Juan','Barredo','Palomo','Plaza del fuerte, 20','29007','632876890','Juanbarredo@mercoracle.es','1',to_date('27/03/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('50','88279877H','Francisca','Casado','Moreno','C/ Miranda, 10','29006','676789876','Fracamo@mercoracle.es','2',to_date('26/03/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('88','53378410','Ayuwoki','Jackson','Maik','C/ Moon Walk, 28','29006','622988774','el_ayuwoki@billiejeans.com','3',to_date('28/08/18','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('111','78451266','Ortega','Y ','Gasset','C/ El pensador, 11','29006','688541002','ortegaygasset@yopmail.com','3',to_date('30/06/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('77','77777777','Cristiano','Ronaldo','Elbicho','C/ Madeira, 7','28088','67777600','suuuuuuuuu@hotmail.com','3',to_date('07/07/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('79','78521403','Karlos','Groucho','Marx','C/ El capital, 44','28451','633521047','marxelmaxista@rojotmail.com','3',to_date('14/01/11','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('500','167565756','Raúl','Romero','Raro','C/ Despedidas, 45','29700','65324523443','raulrr@hotmail.es','2',to_date('19/11/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('305','35112363G','Pedro','Sánchez','Roldán','C/ Ferraz, 6','28008','622936159','psanchez@mercoracle.es','16',to_date('10/01/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('306','63395874T','Juana','Alcaide','Pérez','C/ Hermanos Alvarez Quintero, 3','14900','624796359','juanalcaide@mercoracle.es','16',to_date('10/01/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('29','27883764','Antonio','Alonso','Pino','C/ Malaga 2','29384','675456789','Apino@mercaoracle.es','1',to_date('03/08/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('30','29487890','Jose','Garcia','Roldan','C/ Amansio, 7','29384','654345676','josegar@mercaoracle.es','2',to_date('02/07/14','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('31','11678755','Cristina','Roldan','Navas','C/ Aire, 34','28374','665456765','pacora@mercaoracle.es','3',to_date('06/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('32','9988766','Paco','Ramirez','Sierra','C/ Navahermosa, 11','27364','678987345','parami@mercaoracle.es','5',to_date('03/08/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('33','26374772','Ruben','Heredia','Garcia','C/Paris, 7','28374','656543456','ruhere@mercaoracle.es','5',to_date('09/08/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('34','11112343','Maria','Pino','Burgueño','C/ Rey, 1','26352','678987654','mapi@mercaoracle.es','3',to_date('02/07/16','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('35','87670986','Roberto','Garcia','Ramirez','C/ Blas, 2','22637','664345678','robergar@mercaoracle.es','7',to_date('06/09/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('36','56776654','Noelia','Romero','Pino','C/ Victoria, 22','27322','665544765','noelro@mercaoracle.es','6',to_date('03/08/15','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('99','26258130x','Alberto','Garrido','Ordoñez','C/ Rafael, 12','29501','651424852','albertitoMaquinita@mercoracle.es','6',to_date('18/03/19','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('52','24851235c','Antonia','Solano','Piernagorda','C/ Montesillo, 62','24803','6541280152','antoñita@mercoracle.es','7',to_date('10/03/19','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('98','12145786','Antonio','Olea','Roman','c/ arroyo totalan,5','28541','674512628','brou100@mercoracle.es','2',to_date('03/01/19','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('200','78912345T','Pedro','Garcia','Garcia','C/España, 39','29345','678912345','pegar@mercoracle.es','12',to_date('01/02/03','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('201','78912345A','Jose','Perez','Garcia','C/Malaga, 39','29355','678912346','joper@mercoracle.es','6',to_date('12/02/03','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('202','78912345B','Juan','Lopez','Garcia','C/Rusia, 17','29455','698912346','julo@mercoracle.es','4',to_date('12/12/03','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('151','112233568','Vin','Ventrue','Elendiel','C/ La Piruleta, 123','29456','685236547','vin@mercoracle.es','2',to_date('05/02/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('38','13678760','Monica','Galindo','Pino','C/ Rey, 21','28510','654786954','monicaGalindo@mercoracle.es','2',to_date('03/01/19','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('203','39258201','Julia','Rosales','Perez','C/ Reviriego, 78','29740','666201734','juliarosales@mercoracle.es','4',to_date('22/08/18','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('204','29402875','Guillermo','Diaz','Ibañez','C/ Andorra, 1','29700','600000000','peromadremiawilly@mercoracle.es','30',to_date('09/05/17','DD/MM/RR'),null);
+Insert into EMPLEADO (ID,DNI,NOMBRE,APELLIDO1,APELLIDO2,DOMICILIO,CODIGO_POSTAL,TELEFONO,EMAIL,CAT_EMPLEADO,FECHA_ALTA,USUARIO) values ('304','37281936G','Anselmo','Camelas','Benito','C/ Polaco','28290','666663389','anselmocb@mercoracle.es','4',to_date('10/01/16','DD/MM/RR'),null);
+REM INSERTING into ENTREGA
+SET DEFINE OFF;
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('14','55555555A',to_date('19/03/19','DD/MM/RR'),'555','C/ pepillo, 23');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('1','67867433',to_date('18/03/19','DD/MM/RR'),'23','C/ Rafael, 9');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('2','34567567',to_date('19/03/19','DD/MM/RR'),'16','C/ Pepehillo, 10');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('3','86785432',to_date('20/03/19','DD/MM/RR'),'24','C/ Farola 25-1G');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('4','45345311',to_date('20/03/19','DD/MM/RR'),'25','C/ Lomas 33-1G');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('5','43234222',to_date('20/03/19','DD/MM/RR'),'26','C/ Ronda 56-1G');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('6','54634521',to_date('20/03/19','DD/MM/RR'),'27','C/ Cazalla 33-1G');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('7','34234244',to_date('21/03/19','DD/MM/RR'),'28','C/ Salamanca 45-1G');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('8','54354355',to_date('21/03/19','DD/MM/RR'),'29','C/ Granada 175-1G');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('9','11087825',to_date('21/03/19','DD/MM/RR'),'30','Avenida Juan Sebastián Elcano, 117 Pedregalejo');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('10','31403229',to_date('21/03/19','DD/MM/RR'),'31','Cortina del Muelle, 1');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('11','33028858',to_date('22/03/19','DD/MM/RR'),'32','Casas de Campos 3');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('12','13504134',to_date('22/03/19','DD/MM/RR'),'33','Cuarteles, 66 - Edf.Cantabria');
+Insert into ENTREGA (ID,CLIENTE,FECHA_ENTREGA,TICKET,DIRECCION_ENTREGA) values ('13','77336699J',to_date('18/03/19','DD/MM/RR'),'102','Paseo de la Farola, 11');
+REM INSERTING into EQUIPO
+SET DEFINE OFF;
+Insert into EQUIPO (ID,TIPO_EQUIPO,ZONA_USO,MARCA,MODELO) values ('2','Administrativo','Recepción','LG','3.8');
+Insert into EQUIPO (ID,TIPO_EQUIPO,ZONA_USO,MARCA,MODELO) values ('1','Conservación','Interior','Samsung','1.2');
+Insert into EQUIPO (ID,TIPO_EQUIPO,ZONA_USO,MARCA,MODELO) values ('3','Pesaje','Interior','Monka','1.8');
+Insert into EQUIPO (ID,TIPO_EQUIPO,ZONA_USO,MARCA,MODELO) values ('4','Administrativo','Recepción','HP','2.2');
+Insert into EQUIPO (ID,TIPO_EQUIPO,ZONA_USO,MARCA,MODELO) values ('5','Preparación','Interior','Lg','2.5');
+REM INSERTING into FACTURA
+SET DEFINE OFF;
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('3','25423411','2');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('4','67867433','3');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('6','78678644','7');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('18','25748963','19');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('23','123456789','27');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('2','78678644','1');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('17','71335488','16');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('5','47345210','6');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('7','86785432','4');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('8','45345311','5');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('9','43234222','8');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('10','54634521','9');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('11','34234244','10');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('12','54354355','11');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('13','11087825','12');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('14','31403229','13');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('15','33028858','14');
+Insert into FACTURA (ID,CLIENTE,NUM_FACTURA) values ('16','13504134','15');
+REM INSERTING into FIDELIZADO
+SET DEFINE OFF;
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('71213634E','26','26','0','667650569','yosef67@gmail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('77336699J','50','1741','7031','693582471','mediohombre@armada.es');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('55555555A','33','8564159','85','612456789','pepillo@gmail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('67867433','1','1','500','654654654','hannae@jotmail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('78678644','2','2','1000','645645645','villanueva@gemail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('28708690','24','24','0','624842963','arufu@gmail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('30515508','25','25','0','634951753','almugafas@gmail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('23874567','10','10','0','602863726','abelrealrealZ@gmail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('16374314','27','33','2020','675431234','malorev@mail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('52364785','28','28','500','666666666','yanito_tecuenta_uncuentito@nove.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('12345123','29','29','0','645678612','dontcommitkermit@betis.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('41720934','127','1257','154','6856533794','xxNarutoxx@yahoo.es');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('75674321','3','3','50','675678765','villanueva@casimail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('25756456','4','4','20000','654343234','parejo22@jopmail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('25423411','5','5','30','689987789','cris45@hmail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('34567567','6','6','80','678909876','joxetxo21@juma.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('97896753','7','7','40','657876567','mil34@juma.es');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('45645221','8','8','50','654345686','giol2@gemail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('71335488','9','9','100','633435777','shur_perico@calientemail.com');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('47345210','23','23','1500','623150481','antonio@gmail.es');
+Insert into FIDELIZADO (DNI,NUM_CLIENTE,N_TARJETA,PUNTOS_ACUMULADOS,TELEFONO,EMAIL) values ('54634521','11','11','0','632804700','oli45@yahoo.com');
+REM INSERTING into HISTORICO_OFERTA
+SET DEFINE OFF;
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('654634',to_date('14/07/19','DD/MM/RR'),'4',to_date('28/07/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('957513',to_date('14/07/19','DD/MM/RR'),'4',to_date('28/07/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('3',to_date('01/12/18','DD/MM/RR'),'2',to_date('06/01/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('3',to_date('01/12/17','DD/MM/RR'),'2',to_date('06/01/18','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('3',to_date('01/12/16','DD/MM/RR'),'1',to_date('06/01/17','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('1232343',to_date('01/01/19','DD/MM/RR'),'1',to_date('01/06/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('1548754',to_date('01/02/19','DD/MM/RR'),'2',to_date('01/03/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('121212123005',to_date('13/03/19','DD/MM/RR'),'1',to_date('20/03/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('121212123006',to_date('12/04/18','DD/MM/RR'),'4',to_date('15/04/18','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('111111',to_date('19/02/18','DD/MM/RR'),'3',to_date('15/02/18','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('1112221',to_date('20/01/19','DD/MM/RR'),'2',to_date('25/01/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('12345',to_date('27/12/18','DD/MM/RR'),'4',to_date('29/12/18','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('12318',to_date('10/02/19','DD/MM/RR'),'1',to_date('12/02/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('12319',to_date('12/02/19','DD/MM/RR'),'1',to_date('16/02/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('23432',to_date('10/02/19','DD/MM/RR'),'2',to_date('12/02/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('23433',to_date('12/02/19','DD/MM/RR'),'3',to_date('16/02/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('23444',to_date('13/02/19','DD/MM/RR'),'2',to_date('19/02/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('12321',to_date('10/02/19','DD/MM/RR'),'1',to_date('12/02/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('12322',to_date('12/02/19','DD/MM/RR'),'1',to_date('16/02/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('6666666',to_date('10/02/19','DD/MM/RR'),'3',to_date('12/02/19','DD/MM/RR'));
+Insert into HISTORICO_OFERTA (PRODUCTO,FECHA_INICIO,OFERTA,FECHA_FIN) values ('6742346',to_date('13/02/19','DD/MM/RR'),'1',to_date('19/02/19','DD/MM/RR'));
+REM INSERTING into HISTORICO_PRECIO
+SET DEFINE OFF;
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('56554',to_date('12/04/17','DD/MM/RR'),'2,78');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('89895642',to_date('05/01/19','DD/MM/RR'),'5');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('1548754',to_date('05/01/19','DD/MM/RR'),'2');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('3',to_date('17/11/16','DD/MM/RR'),'6,95');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('3',to_date('20/11/17','DD/MM/RR'),'7,95');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('3',to_date('20/11/18','DD/MM/RR'),'9,95');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('23422',to_date('23/11/17','DD/MM/RR'),'3,2');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('23422',to_date('16/01/19','DD/MM/RR'),'3');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('23422',to_date('14/03/19','DD/MM/RR'),'2,5');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('23',to_date('10/07/18','DD/MM/RR'),'2,6');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('1232343',to_date('05/08/18','DD/MM/RR'),'300');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('1232343',to_date('07/06/17','DD/MM/RR'),'350');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('1548754',to_date('18/08/18','DD/MM/RR'),'20');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('121212123005',to_date('10/03/19','DD/MM/RR'),'6');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('121212123006',to_date('12/02/19','DD/MM/RR'),'3,5');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('111111',to_date('10/01/18','DD/MM/RR'),'12');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('1112221',to_date('20/01/18','DD/MM/RR'),'56');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('12345',to_date('21/02/19','DD/MM/RR'),'4,8');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('12318',to_date('19/02/19','DD/MM/RR'),'2');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('12319',to_date('15/02/19','DD/MM/RR'),'1,5');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('23432',to_date('19/02/19','DD/MM/RR'),'2');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('23433',to_date('15/02/19','DD/MM/RR'),'2,5');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('23444',to_date('19/02/19','DD/MM/RR'),'1,5');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('12321',to_date('18/02/19','DD/MM/RR'),'3');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('12322',to_date('19/02/19','DD/MM/RR'),'2,4');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('6666666',to_date('15/02/19','DD/MM/RR'),'1,3');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('1232343',to_date('19/02/19','DD/MM/RR'),'360');
+Insert into HISTORICO_PRECIO (PRODUCTO,FECHA,PRECIO) values ('6742346',to_date('18/02/19','DD/MM/RR'),'1,7');
+REM INSERTING into IVA
+SET DEFINE OFF;
+Insert into IVA (TIPO_IVA,PORCENTAJE,DESCRIPCION) values ('1','4','Superreducido');
+Insert into IVA (TIPO_IVA,PORCENTAJE,DESCRIPCION) values ('2','10','Reducido');
+Insert into IVA (TIPO_IVA,PORCENTAJE,DESCRIPCION) values ('3','21','General');
+REM INSERTING into LOTE
+SET DEFINE OFF;
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('1','7','12345',to_date('17/07/36','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('2','1','1548754',to_date('16/03/19','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('3','3','2637289',to_date('15/12/18','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('20','5','62062062',to_date('23/08/19','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('14','6','9999876',to_date('03/05/22','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('15','6','6666666',to_date('17/02/21','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('4','7','12318',to_date('20/03/19','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('5','7','12319',to_date('20/03/19','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('6','7','23432',to_date('15/12/20','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('7','7','23433',to_date('15/12/20','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('8','7','23444',to_date('15/12/20','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('9','7','12321',to_date('20/03/19','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('10','7','12322',to_date('20/03/19','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('11','7','6666666',to_date('15/12/19','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('12','7','1232343',to_date('20/03/19','DD/MM/RR'));
+Insert into LOTE (ID,MOBILIARIO,PRODUCTO,FECHA_CADUCIDAD) values ('13','7','6742346',to_date('15/12/19','DD/MM/RR'));
+REM INSERTING into MOBILIARIO
+SET DEFINE OFF;
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('6',null,'Estantes','Para colocar los productos','120','3','1');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('7',null,'Expositores','Exponer los productos más vistosos','10','5','1');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('10',null,'Cámaras de seguridad','Dispositivo de vigilancia para evitr robos.',null,'1','5');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('1',null,'Nevera','Nevera para refrescos','40','2','4');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('2',null,'Caja registradora',null,null,'8','9');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('3',null,'Báscula','Para pesar la fruta',null,'4','1');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('9',null,'Maquina de carga','Trasladar los productos de los almacenes a los estantes',null,'6','1');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('12',null,'Máquina cortadora','Máquina para cortar carnes y embutidos en carnicería/charcutería',null,'4','4');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('13',null,'Mueble apoyabicicletas','Para apoyar las bicicletas de exposición de forma oblícua','30','9','10');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('14',null,'Enchufe con usb','Para que los clientes usen su móvil mientras carga','1','1','11');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('17',null,'Máquina de café','Para que los trabajadores puedan disfrutar de un buen café en su descanso.',null,'3','24');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('11',null,'Envasador al Vacio','Para conservar los productos al vacio',null,'5','3');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('15',null,'Cámara Frigorífica','Para conservar carnes o vegetales',null,'2','2');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('16',null,'Cubo de basura','Es un cubo convencial, de tamaño pequeño, para tirar basura.','10','2','1');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('4',null,'Congeladores','Para productos congelados','60','2','5');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('5',null,'Hornos','Para bolleria','30','5','3');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('8',null,'Lector de Códigos de Barras','Para identificar los productos por su código.',null,'8','9');
+Insert into MOBILIARIO (ID,CONSTRUCCION,NOMBRE_MOBILIARIO,DESCRIPCION,CAPACIDAD,EN_USO,PASILLO) values ('18',null,'Fregona','Para limpiar superficies','10','6','24');
+REM INSERTING into NOMINA
+SET DEFINE OFF;
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('03/10/18','DD/MM/RR'),'960','19','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('02/10/18','DD/MM/RR'),'950','20','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('02/11/18','DD/MM/RR'),'950','20','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('02/12/18','DD/MM/RR'),'950','20','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('24/06/05','DD/MM/RR'),'1250','96','1525');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('05/10/16','DD/MM/RR'),'950','17','1125');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('05/10/16','DD/MM/RR'),'950','18','1125');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('09/10/16','DD/MM/RR'),'945','32','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('30/09/17','DD/MM/RR'),'945','1','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('01/10/17','DD/MM/RR'),'950','2','1125');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('02/10/17','DD/MM/RR'),'950','3','1125');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('03/10/17','DD/MM/RR'),'940','4','1090');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('04/10/16','DD/MM/RR'),'945','5','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('05/10/16','DD/MM/RR'),'950','6','1125');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('06/10/16','DD/MM/RR'),'950','7','1125');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('30/09/17','DD/MM/RR'),'950','8','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('02/11/18','DD/MM/RR'),'950','48','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('02/11/18','DD/MM/RR'),'950','49','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('02/11/18','DD/MM/RR'),'950','50','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('09/10/18','DD/MM/RR'),'950','92','1125');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('09/11/16','DD/MM/RR'),'950','16','1125');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('06/10/16','DD/MM/RR'),'950','9','1125');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('06/10/16','DD/MM/RR'),'950','10','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('06/10/16','DD/MM/RR'),'950','11','1090');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('06/10/16','DD/MM/RR'),'950','12','1090');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('09/10/16','DD/MM/RR'),'950','13','1125');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('09/10/16','DD/MM/RR'),'950','14','1100');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('09/10/16','DD/MM/RR'),'950','15','1090');
+Insert into NOMINA (FECHA_EMISION,IMPORTE_NETO,EMPLEADO,IMPORTE_BRUTO) values (to_date('09/10/16','DD/MM/RR'),'950','16','1125');
+REM INSERTING into OFERTA
+SET DEFINE OFF;
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('4','4x2','Por la compra de 2 productos, los dos siguientes le sale gratis');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('5','3ud. -10%','Por la compra de dos productos, si se lleva otro, le descontamos un 10%.');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('7','IBA','No se le cobrará el tipo de IVA más barato de su compra.');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('8','3ud. -50%','Por la compra de 3 productos, el tercero obtiene un 50% de descuento');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('9','50%','Producto rebajado al 50%');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('10','80%','Producto rebajado al 80%');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('2','2x1','Por la compra de un producto, se lleva uno gratis.');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('3','2ud. -50%','Por la compra de un producto, si se lleva otro, le descontamos un 50%.');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('11','-20%','Producto rebajado al 20%');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('12','10%','Producto rebajado al 10%');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('13','15%','Producto rebajado al 15%');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('14','30%','Producto rebajado al 30%');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('15','40%','Producto rebajado al 40%');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('1','3x2','Por la compra de 2 productos, el tercero le sale gratis');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('20','20%','20% de descuento en tu proxima compra antes de 30 dias hábiles');
+Insert into OFERTA (ID,TIPO_OFERTA,DESCRIPCION) values ('6','3ud: -30%','Por la compra de 3 productos, el tercero obtiene 30% de descuento');
+REM INSERTING into PASILLO
+SET DEFINE OFF;
+Insert into PASILLO (ID,DESCRIPCION) values ('12','Videojuegos/ImgSonid');
+Insert into PASILLO (ID,DESCRIPCION) values ('13','Cuidado personal');
+Insert into PASILLO (ID,DESCRIPCION) values ('20','Deportes');
+Insert into PASILLO (ID,DESCRIPCION) values ('23','Dulces');
+Insert into PASILLO (ID,DESCRIPCION) values ('1','Frutas y verduras');
+Insert into PASILLO (ID,DESCRIPCION) values ('2','Carnicería');
+Insert into PASILLO (ID,DESCRIPCION) values ('3','Congelados');
+Insert into PASILLO (ID,DESCRIPCION) values ('4','Refrigerados');
+Insert into PASILLO (ID,DESCRIPCION) values ('5','Productos del hogar');
+Insert into PASILLO (ID,DESCRIPCION) values ('6','Bollería/Panadería');
+Insert into PASILLO (ID,DESCRIPCION) values ('7','Comidas enlatadas');
+Insert into PASILLO (ID,DESCRIPCION) values ('8','Pescadería/Mariscos');
+Insert into PASILLO (ID,DESCRIPCION) values ('9','Recepción');
+Insert into PASILLO (ID,DESCRIPCION) values ('10','Lácteos');
+Insert into PASILLO (ID,DESCRIPCION) values ('11','Bebidas');
+Insert into PASILLO (ID,DESCRIPCION) values ('17','Imagen y sonido');
+Insert into PASILLO (ID,DESCRIPCION) values ('18','Informática');
+Insert into PASILLO (ID,DESCRIPCION) values ('21','Papelería');
+Insert into PASILLO (ID,DESCRIPCION) values ('22','Juguetes');
+Insert into PASILLO (ID,DESCRIPCION) values ('24','Personal');
+Insert into PASILLO (ID,DESCRIPCION) values ('14','Preparados');
+Insert into PASILLO (ID,DESCRIPCION) values ('15','Snacks/Aperitivos');
+Insert into PASILLO (ID,DESCRIPCION) values ('16','Sección mascotas');
+REM INSERTING into PRODUCTO
+SET DEFINE OFF;
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('654634',null,'Tarjeta 50 Steam','25','10',null,'40','10','1','50','12');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('89895642','7','Hueso de goma','20','1',null,'0,7','32','2','7','2');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('6079503235621','2','Huesitos','100','21',null,'2','20','1','1,99','15');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('39847598','9','Whey Protein','20','5','20','1000','44','2','14,99','20');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('93840539','11','Guantes corssfit','30','10',null,'30','45','2','10,99','20');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('121212123000',null,'Cerveza San Miguel','50','42',null,'0,33','7','8','0,85','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('121212123001',null,'Cerveza Plsner Urqell','50','42',null,'0,5','7','8','0,95','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('121212123002',null,'Cerveza Helles','50','42',null,'0,5','7','8','1,05','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('121212123003',null,'Cerveza Voll-Damm','50','42',null,'1','7','8','1,25','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('121212123004',null,'Cerveza Zipfer','50','42',null,'1','7','8','1,5','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('121212123005',null,'Cerveza Victoria','50','42',null,'1','7','8','1,75','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('121212123006',null,'Cerveza Skol','50','42',null,'1','7','8','2','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('62062062','7','Tortas de Aceite','100','20',null,'1000','51','1','2,5','21');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('8480000720145','1','Morcilla de Burgos','25','20',null,'250','6',null,'5',null);
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('2516854',null,'Berenjena Larga granel','150','150',null,null,'11',null,'1,6','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('42515756','5','Helado caramelo y nueces pecanas','15','14','-5','500','4','1','2','2');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('6342374',null,'Portátil MSI','5','2',null,'5000','10','5','900','12');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('6577374',null,'Bateria portatil','30','20',null,'2000','8','2','50','11');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('111111',null,'Baguette','10','5',null,'100','1',null,'0,45','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1112221',null,'Leche Natural','100','20',null,'1000','7','2','0,4',null);
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('12345',null,'Chocolate Nestle','34','12',null,'100','12','2','1','6');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('43565',null,'Decena de huevos','100','20',null,'300','7','3','2,4','10');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('65757',null,'Botella de Ron','20','3',null,'700','3','1','7','11');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('3534534',null,'Botella de Vodka','30','3',null,'700','3','1','6','11');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('123456',null,'Queso curado','50','15','15','2000','6','1','14','4');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('111114',null,'Detergente','82','15',null,'500','19','1','3,4','5');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1231231235689',null,'Pluma estilográfica PILOT tamaño mediano','25','10',null,'0,1','40','1','17,95','21');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('6491793650270',null,'Fabada Litoral','100','30',null,'0,5','15','1','1,7','7');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('159634',null,'Tarjeta 15 Google Play','25','15',null,'2','10','1','15','12');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('957513',null,'Tarjeta 50 Playstation Store','25','10',null,'2','10','1','50','12');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('2425278342984',null,'Lentejas Marcaoracle','100','30',null,'0,5','15','1','0,95','7');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('6512316785230',null,'Garbanzos Marcaoracle','100','30',null,'0,5','15','1','0,95','7');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('23454567',null,'Saco de patatas','50','10',null,'3000','13','2','3,2','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('4673942214',null,'Fregona','40','5',null,'500','19','1','3','5');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('2','4','Doritos','150','30','21','250','17','3','1,55','12');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1',null,'Tarrina Guacamole','5','3','13','1000','25','5','7,95','12');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('3',null,'Pez de colores','230','30',null,null,'32','2','9,95','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('4',null,'Comida para peces','45','15','21','750','32','1','4,69','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('124253',null,'Plátanos','200','50','18','80','11','1','0,25','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1548754',null,'Pizza Casa Tarradellas','30','8','-5','300','4','1','2,5','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1818729',null,'Neumatico','11','3',null,'5','21','3','25','9');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('9164587',null,'Rosas','15','15',null,'200','22','1','2','6');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('23574753',null,'Atún','100','3',null,'200','8','3','1','7');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('23432','2','Jabón de manos menta','100','5',null,'500','18','1','3,99','13');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('23433','3','Jabón de manos aloe vera','100','5',null,'500','18','1','3,99','13');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('23444','2','Jabón de manos fresa','100','5',null,'500','18','1','3,99','13');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('23',null,'Salchichón ibérico pimienta','77','15',null,'250','3','1','2','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('24',null,'Jamón asado especial','10','2','5','50000','6','1','8','4');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('23422',null,'Café soluble descafeinado','200','40',null,'500','17','2','4,55','14');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('12318','2','Pera granel','50','5',null,'1000','11','2','2,5','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('12319','2','Manzana verde granel','50','5',null,'1000','11','2','2,3','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('12320',null,'Tomate pera granel','20','5',null,'1000','13','1','2,99','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('12321','1','Piña rodajas kilo','100','20','5','1000','11','2','3,2','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('12322','3','Pimiento rojo granel','100','5',null,'1000','13','1','2,5','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('466543215453',null,'Cacao Soluble 100%','100','25',null,null,'12','1','2,85','15');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('987413543',null,'Garbanzo Cocido','100','10',null,null,'1',null,'1','5');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('654831',null,'Fuet Espetec Casa Inventadellas','60','30',null,'180','35','1','2,3','2');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('2346234598025','11','Zumo de frutas del bosque','220','25',null,'1500','16',null,'1,5',null);
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('981276345',null,'Kit-Kat White','50','25',null,'100','20','2','2,5','6');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('279816345',null,'Pasta Gallo','100','17',null,'500','0','3','0,85','10');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('427981635',null,'Paté La Piara pack 3','30','12',null,'225','14','1','0,85','7');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1234512645',null,'Chapata','75','75','25','0,5','1','5','0,75','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1234512647',null,'tenis','75','30',null,'0,3','10','5','35','5');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1167898',null,'Chocolate Blanco','120','30',null,'20','11','1','1','2');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('2636367',null,'Almendras','44','20',null,'30','17','2','2,5','5');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('9999876',null,'CocaCola','328','40',null,'100','16','3','2','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('2637289',null,'Nocilla','128','20',null,'40','12','1','1,8','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1626265',null,'Gambas','40','10','-15','80','4','2','12','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('56554',null,'Lasaña','30','15','-12','90','15','2','6','6');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('18374',null,'Azucar','55','20',null,'20','12','1','1,5','7');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('22234',null,'Cereales Chocolate','40','23',null,'44','12','2','2,6','8');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('9876152',null,'Filetes de Pollo','34','15','5','30','5','1','3,2','4');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('5555665',null,'Patatas Fritas','78','40',null,'23','17','2','1,8','4');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('6666666','1','Eneryeti','50','25','8','550','2','2','1','11');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1232343','1','Jamón de Bellota Ibérico','20','4','15','7000','5','3','249,95','2');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('4365486452',null,'Maxibon','40','40','7','10','4','1','3,95','3');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('45623212452',null,'Leche desnatada','150','60','15','1000','7','3','4,05','10');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('314159265',null,'Botellin Ambar','50','2',null,'0,45','3',null,'0,5','4');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('3141592656',null,'Pack 6 Botellines Ambar','50','2',null,'3','3',null,'2,5','4');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('31415926565',null,'Botella Jagger','50','42',null,'1','3',null,'12,75','4');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('101','2','Microondas Artrom','5','23','18','5000','55','1','20','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('105','2','Ciudadelas','3','21','15','2000','87','1','50','1');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('6742346','3','Zumo de Naranja','100','15',null,'1000','2','1','0,8','11');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('8480000720191',null,'Insecticida moscas y mosquitos sin perfume','200','50',null,'750','19','1','1,85','5');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('8480000430113',null,'Lejía normal','200','80',null,'5000','19','1','1,21','5');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('8410128160036',null,'Agua mineral Bezoya pack 6','300','50',null,'9000','2','1','3,54','11');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('3700123300175',null,'Agua mineral Aquarel garrafa 5l','200','40',null,'5000','2','1','1,14','11');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('5449000006011',null,'Fanta Limón botella 2l','300','92',null,'2100','16','1','1,32','11');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('7749505075621',null,'Chocolatinas de menta','50','30',null,'200','20','1','1,99','15');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('9079503715621',null,'Galletitas saladas','30','20',null,'450','20','1','1,5','15');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('432190',null,'Pienso Perros Royal Canin','71','17',null,'10','29','10','15','16');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('432191','2','Yatekomo Sabor Oriental','90','30',null,'0,4','15','10','0,8','15');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('3492340124526',null,'Desodorantes Rexona','200','35',null,'300','18','1','3','13');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('8888393939220',null,'Gillette Fusion ProGlide','300','30',null,'20','18','1','15','13');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('1238595495139',null,'Pijama Rayas Hombre','100','20',null,'1000','26','3','24,99','24');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('56783597466',null,'Pantalón Rayas Unisex','100','20',null,'400','26','1','10,99','24');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('653216',null,'Xbox ONE X 1 TB','20','5',null,null,'55','1','399,99','22');
+Insert into PRODUCTO (CODIGO_BARRAS,OFERTA,DESCRIPCION,STOCK,EXPOSICION,TEMPERATURA,PESO_NETO,CATEGORIA,METROS_LINEALES,PRECIO_ACTUAL,PASILLO) values ('5464745678',null,'FallOut76 PC','10','10',null,null,'55','1','0,99','22');
+REM INSERTING into PROVEE
+SET DEFINE OFF;
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('1','111114');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('2','1548754');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('3','1231231235689');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('4','6491793650270');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('8','1112221');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('9','1167898');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('9','2636367');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('9','2637289');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('9','5555665');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('10','12321');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('11','12322');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('12','987413543');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('12','466543215453');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('13','12319');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('13','12321');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('13','124253');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('14','12322');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('14','2516854');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('16','981276345');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('37','23');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('37','1234512645');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('40','39847598');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('40','93840539');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('50','62062062');
+Insert into PROVEE (PROVEEDOR,PRODUCTO) values ('56','23454567');
+REM INSERTING into PROVEEDOR
+SET DEFINE OFF;
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('5','28394857V','Hacendado','Hacendado','676545676','hh@hmail.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('6','39009485J','Sovena','Jose','678987678','sovena@hotmail.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('7','28399948F','Siro','Antonio','655567876','sirop@hotmail.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('8','22223454J','Covap','Cristian','678876676','siro@yopmail.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('9','99828374K','Casa Pons','Cristobal','66545656','cpons@gemail.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('21','77182736S','Pascual','Pepe Pascual','617263541','pppascual@pascual.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('22','25162536I','ViveSoy','Sara Miranda','667991827','saramr@vivesoy.es');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('23','56030114K','Yatekomo','Inmaculada Medrano','629504526','yatekomoes@yatekomo.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('69','77284596D','Dan Bilzerian','Ignite','633254871','ackignite@yeezy.cz');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('71','63547128D','Ashley Tisdale ','Birus&Co','752189654','TisdAsh@outlook.org');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('40','674987275','Prozis','Miguel Milhao','911982553','prozis@natty.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('50','78912345G','Tortas de aceite Grimor','Sargento Grimor','952091062','tortas@grimor.es');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('2','12345678A','Casa Tarradellas','Cristobal','687687687','c@gmail.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('15','58654966F','Aceites Malaga','Francisco Alcaparra','668125899','aceitesMLG@yahoo.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('18','77491313W','Onieva','Apruébame','666778899','onieva@lcc.uma.es');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('19','77591413X','Enrique','Tu también','665779988','soler@lcc.uma.es');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('30','56568948X','Pilot','José Pérez','696985560','jos@pilot.es');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('34','72134681B','ColaCao','Andrés Pacheco','676378134','apacheco@colacao.es');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('56','67879098B','Patatas Mariano','José Mariano','667546345','marianoelpatatas@patatas.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('1','76877150D','Justiniano','Mugr','660907162','j@hotmail.es');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('3','46978521T','Norauto','Alejandro','652348975','neumatico@rueda.net');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('4','79461325P','Liderflor','Florencia','954789125','planta@flores.net');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('10','87654857Q','Campofrío','Eduardo Noriega','615437594','ventas@campofrio.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('11','76573957H','Findus','Nuria Vazquez','628883642','ventas@findus.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('12','98365738L','Nescafe','Federico Martinez','776374658','ventas@nescafe.es');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('13','87364857Y','Frutas Pelayo','Evaristo Pelayo','676654756','frutas@pelayofrutas.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('14','37463726T','VerdurasFresh','Paloma Ordoñez','655465937','ventas@verfresh.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('16','76441311R','Nestle','Francisco Muñoz','650446754','frnestle@hotmail.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('20','65412301p','CocaCola Málaga','Juan Trujillo','647521363','trujillo@cocacola.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('24','55375321','Pascual','Francisco Pérez','621212358','ventas@pascual.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('31','45641785','El Pozo','Alberto','666655332','ventas@elpozo.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('37','72134681Z','Casa mata','Abdela','722716916','abdelapanaderia@gmail.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('100','42695789Z','Sony','Manuel Ramírez','699875163','es@sony.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('101','96325874','Dell','Lidia Pujol','634951357','contact_es@dell.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('32','77238546','VacunoFreh','Perez Tomillo','624578684','vacunito@carniceria.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('33','12369851','Ultracongelados Vico',' Vico','666666333','vico@ultracongelado.com');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('17','12458760','Vega e Hijos','Francisco Martin','623126954','vega@Quesos.es');
+Insert into PROVEEDOR (ID,NIF,NOMBRE_PROVEEDOR,RESPONSABLE_EMPRESA,TELEFONO,EMAIL) values ('99','46328671Q','Mariscos Recio','Antonio Recio','673256491','antonio@mariscosrecio.com');
+REM INSERTING into REPONE
+SET DEFINE OFF;
+Insert into REPONE (EMPLEADO,PASILLO) values ('1','5');
+Insert into REPONE (EMPLEADO,PASILLO) values ('2','9');
+Insert into REPONE (EMPLEADO,PASILLO) values ('3','12');
+Insert into REPONE (EMPLEADO,PASILLO) values ('4','14');
+Insert into REPONE (EMPLEADO,PASILLO) values ('5','11');
+Insert into REPONE (EMPLEADO,PASILLO) values ('6','2');
+Insert into REPONE (EMPLEADO,PASILLO) values ('7','1');
+Insert into REPONE (EMPLEADO,PASILLO) values ('11','5');
+Insert into REPONE (EMPLEADO,PASILLO) values ('12','6');
+Insert into REPONE (EMPLEADO,PASILLO) values ('13','15');
+Insert into REPONE (EMPLEADO,PASILLO) values ('20','7');
+Insert into REPONE (EMPLEADO,PASILLO) values ('31','18');
+Insert into REPONE (EMPLEADO,PASILLO) values ('34','4');
+Insert into REPONE (EMPLEADO,PASILLO) values ('34','21');
+Insert into REPONE (EMPLEADO,PASILLO) values ('36','16');
+Insert into REPONE (EMPLEADO,PASILLO) values ('45','8');
+Insert into REPONE (EMPLEADO,PASILLO) values ('45','21');
+Insert into REPONE (EMPLEADO,PASILLO) values ('77','3');
+Insert into REPONE (EMPLEADO,PASILLO) values ('79','9');
+Insert into REPONE (EMPLEADO,PASILLO) values ('87','13');
+Insert into REPONE (EMPLEADO,PASILLO) values ('88','10');
+Insert into REPONE (EMPLEADO,PASILLO) values ('96','20');
+Insert into REPONE (EMPLEADO,PASILLO) values ('111','17');
+Insert into REPONE (EMPLEADO,PASILLO) values ('305','14');
+Insert into REPONE (EMPLEADO,PASILLO) values ('306','11');
+REM INSERTING into RETENCION
+SET DEFINE OFF;
+Insert into RETENCION (ID,NOMBRE) values ('5','Formación Profesional');
+Insert into RETENCION (ID,NOMBRE) values ('1','IRPF');
+Insert into RETENCION (ID,NOMBRE) values ('2','S.S.');
+Insert into RETENCION (ID,NOMBRE) values ('3','Contingencias Comunes');
+Insert into RETENCION (ID,NOMBRE) values ('4','Desempleo');
+Insert into RETENCION (ID,NOMBRE) values ('6','Contingencias Profesionales');
+Insert into RETENCION (ID,NOMBRE) values ('7','Cotización Adicional');
+Insert into RETENCION (ID,NOMBRE) values ('8','Anticipos');
+REM INSERTING into RETENCIONES
+SET DEFINE OFF;
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('1','1','30');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('1','2','10');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('1','3','5');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('1','4','6');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('2','1','25');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('2','2','9');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('2','3','4');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('2','4','5');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('1','6','5');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('2','5','15');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('3','3','25');
+Insert into RETENCIONES (CAT_EMPLEADO,RETENCION,PORCENTAJE) values ('3','2','10');
+REM INSERTING into REVISION
+SET DEFINE OFF;
+Insert into REVISION (FECHA,CODIGO_BARRAS,PASILLO) values (to_date('29/04/19','DD/MM/RR'),'42515756','2');
+Insert into REVISION (FECHA,CODIGO_BARRAS,PASILLO) values (to_date('29/04/19','DD/MM/RR'),'56554','6');
+REM INSERTING into SUPERVISA
+SET DEFINE OFF;
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('1','1');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('2','2');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('3','3');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('4','2');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('5','3');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('6','5');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('8','1');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('9','1');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('14','2');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('20','3');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('22','3');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('31','5');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('41','4');
+Insert into SUPERVISA (EMPLEADO,EQUIPO) values ('92','5');
+REM INSERTING into TICKET
+SET DEFINE OFF;
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('15',to_date('02/02/19','DD/MM/RR'),'5','150','45645221');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('16',to_date('02/02/19','DD/MM/RR'),'3',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('13',to_date('15/03/19','DD/MM/RR'),'4','50','78678644');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('14',to_date('16/03/19','DD/MM/RR'),'15','20','78678644');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('12',to_date('16/03/19','DD/MM/RR'),'5',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('19',to_date('17/03/19','DD/MM/RR'),'1',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('69',to_date('04/12/18','DD/MM/RR'),'1','36',null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('100',to_date('19/03/19','DD/MM/RR'),'92',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('101',to_date('01/04/19','DD/MM/RR'),'92',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('102',to_date('18/03/19','DD/MM/RR'),'92','50','77336699J');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('555',to_date('19/02/19','DD/MM/RR'),'333','25','55555555A');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('248',to_date('25/02/19','DD/MM/RR'),'14',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('1',to_date('13/02/17','DD/MM/RR'),'1',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('2',to_date('14/02/17','DD/MM/RR'),'4','30','78678644');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('18',to_date('02/04/18','DD/MM/RR'),'3','20','67867433');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('24',to_date('17/02/19','DD/MM/RR'),'5',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('25',to_date('17/02/19','DD/MM/RR'),'3',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('26',to_date('17/02/19','DD/MM/RR'),'14',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('27',to_date('17/02/19','DD/MM/RR'),'1',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('28',to_date('17/02/19','DD/MM/RR'),'5',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('29',to_date('18/02/19','DD/MM/RR'),'1',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('30',to_date('18/02/19','DD/MM/RR'),'15',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('31',to_date('18/02/19','DD/MM/RR'),'1',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('32',to_date('18/02/19','DD/MM/RR'),'5',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('33',to_date('18/02/19','DD/MM/RR'),'12',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('37',to_date('15/03/19','DD/MM/RR'),'20',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('38',to_date('18/03/19','DD/MM/RR'),'31',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('39',to_date('18/03/19','DD/MM/RR'),'34',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('78',to_date('11/03/19','DD/MM/RR'),'77',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('10',to_date('01/02/19','DD/MM/RR'),'14','34','45645221');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('11',to_date('23/12/18','DD/MM/RR'),'9',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('17',to_date('02/02/17','DD/MM/RR'),'12',null,'25423411');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('35',to_date('15/02/19','DD/MM/RR'),'5','20',null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('36',to_date('15/02/19','DD/MM/RR'),'3',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('21',to_date('19/03/19','DD/MM/RR'),'3','500','52364785');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('22',to_date('19/03/19','DD/MM/RR'),'3','0','12345123');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('50',to_date('19/03/19','DD/MM/RR'),'4',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('3',to_date('16/02/18','DD/MM/RR'),'3',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('4',to_date('16/03/19','DD/MM/RR'),'2',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('5',to_date('06/06/16','DD/MM/RR'),'1',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('6',to_date('08/12/18','DD/MM/RR'),'3','40','78678644');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('7',to_date('25/10/18','DD/MM/RR'),'4',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('8',to_date('28/10/18','DD/MM/RR'),'2','20','67867433');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('9',to_date('02/11/18','DD/MM/RR'),'2','80','25423411');
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('23',to_date('18/03/19','DD/MM/RR'),'5','20',null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('99',to_date('17/03/19','DD/MM/RR'),'14',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('98',to_date('16/02/19','DD/MM/RR'),'12',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('67',to_date('10/03/19','DD/MM/RR'),'2',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('97',to_date('20/02/19','DD/MM/RR'),'5',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('70',to_date('15/03/19','DD/MM/RR'),'12',null,null);
+Insert into TICKET (ID,FECHA_PEDIDO,EMPLEADO,PUNTOS,FIDELIZADO) values ('20',to_date('16/02/19','DD/MM/RR'),'12',null,null);
+--------------------------------------------------------
+--  DDL for Index CATEGORIA_NOMBRE_CATEGORIA_UN
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "CATEGORIA_NOMBRE_CATEGORIA_UN" ON "CATEGORIA" ("NOMBRE_CATEGORIA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CATEGORIA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "CATEGORIA_PK" ON "CATEGORIA" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CAT_EMPLEADO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "CAT_EMPLEADO_PK" ON "CAT_EMPLEADO" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index CLIENTE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "CLIENTE_PK" ON "CLIENTE" ("DNI") 
+  ;
+--------------------------------------------------------
+--  DDL for Index DETALLE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "DETALLE_PK" ON "DETALLE" ("PRODUCTO", "LINEA", "TICKET") 
+  ;
+--------------------------------------------------------
+--  DDL for Index EMPLEADO_DNI_UN
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EMPLEADO_DNI_UN" ON "EMPLEADO" ("DNI") 
+  ;
+--------------------------------------------------------
+--  DDL for Index EMPLEADO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EMPLEADO_PK" ON "EMPLEADO" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ENTREGA__IDX
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "ENTREGA__IDX" ON "ENTREGA" ("TICKET") 
+  ;
+--------------------------------------------------------
+--  DDL for Index ENTREGA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "ENTREGA_PK" ON "ENTREGA" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index EQUIPO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "EQUIPO_PK" ON "EQUIPO" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FACTURA_NUM_FACTURA_UN
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "FACTURA_NUM_FACTURA_UN" ON "FACTURA" ("NUM_FACTURA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FACTURA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "FACTURA_PK" ON "FACTURA" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FIDELIZADO_N_TARJETA_UN
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "FIDELIZADO_N_TARJETA_UN" ON "FIDELIZADO" ("N_TARJETA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FIDELIZADO_NUM_CLIENTE_UN
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "FIDELIZADO_NUM_CLIENTE_UN" ON "FIDELIZADO" ("NUM_CLIENTE") 
+  ;
+--------------------------------------------------------
+--  DDL for Index FIDELIZADO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "FIDELIZADO_PK" ON "FIDELIZADO" ("DNI") 
+  ;
+--------------------------------------------------------
+--  DDL for Index HISTORICO_OFERTA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "HISTORICO_OFERTA_PK" ON "HISTORICO_OFERTA" ("PRODUCTO", "FECHA_INICIO", "OFERTA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index HISTORICO_PRECIO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "HISTORICO_PRECIO_PK" ON "HISTORICO_PRECIO" ("PRODUCTO", "FECHA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index IVA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "IVA_PK" ON "IVA" ("TIPO_IVA") 
+  ;
+--------------------------------------------------------
+--  DDL for Index LOTE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "LOTE_PK" ON "LOTE" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index MOBILIARIO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "MOBILIARIO_PK" ON "MOBILIARIO" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index NOMINA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "NOMINA_PK" ON "NOMINA" ("EMPLEADO", "FECHA_EMISION") 
+  ;
+--------------------------------------------------------
+--  DDL for Index OFERTA_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "OFERTA_PK" ON "OFERTA" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PASILLO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PASILLO_PK" ON "PASILLO" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PK_REVISION
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PK_REVISION" ON "REVISION" ("FECHA", "CODIGO_BARRAS") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PRODUCTO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PRODUCTO_PK" ON "PRODUCTO" ("CODIGO_BARRAS") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PROVEEDOR_NIF_UN
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PROVEEDOR_NIF_UN" ON "PROVEEDOR" ("NIF") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PROVEEDOR_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PROVEEDOR_PK" ON "PROVEEDOR" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index PROVEE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "PROVEE_PK" ON "PROVEE" ("PROVEEDOR", "PRODUCTO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index REPONE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "REPONE_PK" ON "REPONE" ("EMPLEADO", "PASILLO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index RETENCIONES_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "RETENCIONES_PK" ON "RETENCIONES" ("CAT_EMPLEADO", "RETENCION") 
+  ;
+--------------------------------------------------------
+--  DDL for Index RETENCION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "RETENCION_PK" ON "RETENCION" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Index SUPERVISAV1_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SUPERVISAV1_PK" ON "SUPERVISA" ("EMPLEADO", "EQUIPO") 
+  ;
+--------------------------------------------------------
+--  DDL for Index TICKET_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "TICKET_PK" ON "TICKET" ("ID") 
+  ;
+--------------------------------------------------------
+--  DDL for Procedure P_REVISA
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE PROCEDURE "P_REVISA" as
+begin
+   insert into revision 
+   select sysdate, codigo_barras, pa.id from producto p join pasillo pa on(p.pasillo = pa.id)  
+   where temperatura <0 and upper (pa.descripcion) != 'CONGELADOS';
+end;   
+
+/
+--------------------------------------------------------
+--  Constraints for Table CATEGORIA
+--------------------------------------------------------
+
+  ALTER TABLE "CATEGORIA" ADD CONSTRAINT "CATEGORIA_NOMBRE_CATEGORIA_UN" UNIQUE ("NOMBRE_CATEGORIA") ENABLE;
+ 
+  ALTER TABLE "CATEGORIA" ADD CONSTRAINT "CATEGORIA_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "CATEGORIA" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "CATEGORIA" MODIFY ("NOMBRE_CATEGORIA" NOT NULL ENABLE);
+ 
+  ALTER TABLE "CATEGORIA" MODIFY ("IVA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table CAT_EMPLEADO
+--------------------------------------------------------
+
+  ALTER TABLE "CAT_EMPLEADO" ADD CONSTRAINT "CAT_EMPLEADO_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "CAT_EMPLEADO" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "CAT_EMPLEADO" MODIFY ("NOMBRE_CARGO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table CLIENTE
+--------------------------------------------------------
+
+  ALTER TABLE "CLIENTE" ADD CONSTRAINT "CLIENTE_PK" PRIMARY KEY ("DNI") ENABLE;
+ 
+  ALTER TABLE "CLIENTE" MODIFY ("DNI" NOT NULL ENABLE);
+ 
+  ALTER TABLE "CLIENTE" MODIFY ("NOMBRE" NOT NULL ENABLE);
+ 
+  ALTER TABLE "CLIENTE" MODIFY ("APELLIDO1" NOT NULL ENABLE);
+ 
+  ALTER TABLE "CLIENTE" MODIFY ("DOMICILIO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "CLIENTE" MODIFY ("CODIGO_POSTAL" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table DETALLE
+--------------------------------------------------------
+
+  ALTER TABLE "DETALLE" ADD CONSTRAINT "DETALLE_PK" PRIMARY KEY ("PRODUCTO", "LINEA", "TICKET") ENABLE;
+ 
+  ALTER TABLE "DETALLE" MODIFY ("PRODUCTO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "DETALLE" MODIFY ("LINEA" NOT NULL ENABLE);
+ 
+  ALTER TABLE "DETALLE" MODIFY ("CANTIDAD" NOT NULL ENABLE);
+ 
+  ALTER TABLE "DETALLE" MODIFY ("TICKET" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table EMPLEADO
+--------------------------------------------------------
+
+  ALTER TABLE "EMPLEADO" ADD CONSTRAINT "EMPLEADO_DNI_UN" UNIQUE ("DNI") ENABLE;
+ 
+  ALTER TABLE "EMPLEADO" ADD CONSTRAINT "EMPLEADO_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "EMPLEADO" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EMPLEADO" MODIFY ("DNI" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EMPLEADO" MODIFY ("NOMBRE" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EMPLEADO" MODIFY ("APELLIDO1" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EMPLEADO" MODIFY ("DOMICILIO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EMPLEADO" MODIFY ("CODIGO_POSTAL" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EMPLEADO" MODIFY ("TELEFONO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EMPLEADO" MODIFY ("EMAIL" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EMPLEADO" MODIFY ("CAT_EMPLEADO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EMPLEADO" MODIFY ("FECHA_ALTA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table ENTREGA
+--------------------------------------------------------
+
+  ALTER TABLE "ENTREGA" ADD CONSTRAINT "ENTREGA_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "ENTREGA" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ENTREGA" MODIFY ("CLIENTE" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ENTREGA" MODIFY ("FECHA_ENTREGA" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ENTREGA" MODIFY ("TICKET" NOT NULL ENABLE);
+ 
+  ALTER TABLE "ENTREGA" MODIFY ("DIRECCION_ENTREGA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table EQUIPO
+--------------------------------------------------------
+
+  ALTER TABLE "EQUIPO" ADD CONSTRAINT "EQUIPO_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "EQUIPO" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EQUIPO" MODIFY ("TIPO_EQUIPO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "EQUIPO" MODIFY ("ZONA_USO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table FACTURA
+--------------------------------------------------------
+
+  ALTER TABLE "FACTURA" ADD CONSTRAINT "FACTURA_NUM_FACTURA_UN" UNIQUE ("NUM_FACTURA") ENABLE;
+ 
+  ALTER TABLE "FACTURA" ADD CONSTRAINT "FACTURA_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "FACTURA" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "FACTURA" MODIFY ("CLIENTE" NOT NULL ENABLE);
+ 
+  ALTER TABLE "FACTURA" MODIFY ("NUM_FACTURA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table FIDELIZADO
+--------------------------------------------------------
+
+  ALTER TABLE "FIDELIZADO" ADD CONSTRAINT "FIDELIZADO_NUM_CLIENTE_UN" UNIQUE ("NUM_CLIENTE") ENABLE;
+ 
+  ALTER TABLE "FIDELIZADO" ADD CONSTRAINT "FIDELIZADO_N_TARJETA_UN" UNIQUE ("N_TARJETA") ENABLE;
+ 
+  ALTER TABLE "FIDELIZADO" ADD CONSTRAINT "FIDELIZADO_PK" PRIMARY KEY ("DNI") ENABLE;
+ 
+  ALTER TABLE "FIDELIZADO" MODIFY ("DNI" NOT NULL ENABLE);
+ 
+  ALTER TABLE "FIDELIZADO" MODIFY ("NUM_CLIENTE" NOT NULL ENABLE);
+ 
+  ALTER TABLE "FIDELIZADO" MODIFY ("N_TARJETA" NOT NULL ENABLE);
+ 
+  ALTER TABLE "FIDELIZADO" MODIFY ("PUNTOS_ACUMULADOS" NOT NULL ENABLE);
+ 
+  ALTER TABLE "FIDELIZADO" MODIFY ("EMAIL" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table HISTORICO_OFERTA
+--------------------------------------------------------
+
+  ALTER TABLE "HISTORICO_OFERTA" ADD CONSTRAINT "HISTORICO_OFERTA_PK" PRIMARY KEY ("PRODUCTO", "FECHA_INICIO", "OFERTA") ENABLE;
+ 
+  ALTER TABLE "HISTORICO_OFERTA" MODIFY ("PRODUCTO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "HISTORICO_OFERTA" MODIFY ("FECHA_INICIO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "HISTORICO_OFERTA" MODIFY ("OFERTA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table HISTORICO_PRECIO
+--------------------------------------------------------
+
+  ALTER TABLE "HISTORICO_PRECIO" ADD CONSTRAINT "HISTORICO_PRECIO_PK" PRIMARY KEY ("PRODUCTO", "FECHA") ENABLE;
+ 
+  ALTER TABLE "HISTORICO_PRECIO" MODIFY ("PRODUCTO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "HISTORICO_PRECIO" MODIFY ("FECHA" NOT NULL ENABLE);
+ 
+  ALTER TABLE "HISTORICO_PRECIO" MODIFY ("PRECIO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table IVA
+--------------------------------------------------------
+
+  ALTER TABLE "IVA" ADD CONSTRAINT "IVA_PK" PRIMARY KEY ("TIPO_IVA") ENABLE;
+ 
+  ALTER TABLE "IVA" MODIFY ("TIPO_IVA" NOT NULL ENABLE);
+ 
+  ALTER TABLE "IVA" MODIFY ("PORCENTAJE" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table LOTE
+--------------------------------------------------------
+
+  ALTER TABLE "LOTE" ADD CONSTRAINT "LOTE_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "LOTE" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "LOTE" MODIFY ("MOBILIARIO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "LOTE" MODIFY ("PRODUCTO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "LOTE" MODIFY ("FECHA_CADUCIDAD" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table MOBILIARIO
+--------------------------------------------------------
+
+  ALTER TABLE "MOBILIARIO" ADD CONSTRAINT "MOBILIARIO_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "MOBILIARIO" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "MOBILIARIO" MODIFY ("NOMBRE_MOBILIARIO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "MOBILIARIO" MODIFY ("EN_USO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "MOBILIARIO" MODIFY ("PASILLO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table NOMINA
+--------------------------------------------------------
+
+  ALTER TABLE "NOMINA" ADD CONSTRAINT "NOMINA_PK" PRIMARY KEY ("EMPLEADO", "FECHA_EMISION") ENABLE;
+ 
+  ALTER TABLE "NOMINA" MODIFY ("FECHA_EMISION" NOT NULL ENABLE);
+ 
+  ALTER TABLE "NOMINA" MODIFY ("IMPORTE_NETO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "NOMINA" MODIFY ("EMPLEADO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "NOMINA" MODIFY ("IMPORTE_BRUTO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table OFERTA
+--------------------------------------------------------
+
+  ALTER TABLE "OFERTA" ADD CONSTRAINT "OFERTA_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "OFERTA" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "OFERTA" MODIFY ("TIPO_OFERTA" NOT NULL ENABLE);
+ 
+  ALTER TABLE "OFERTA" MODIFY ("DESCRIPCION" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PASILLO
+--------------------------------------------------------
+
+  ALTER TABLE "PASILLO" ADD CONSTRAINT "PASILLO_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "PASILLO" MODIFY ("ID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PRODUCTO
+--------------------------------------------------------
+
+  ALTER TABLE "PRODUCTO" ADD CONSTRAINT "PRODUCTO_PK" PRIMARY KEY ("CODIGO_BARRAS") ENABLE;
+ 
+  ALTER TABLE "PRODUCTO" MODIFY ("CODIGO_BARRAS" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PRODUCTO" MODIFY ("STOCK" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PRODUCTO" MODIFY ("EXPOSICION" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PRODUCTO" MODIFY ("CATEGORIA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PROVEE
+--------------------------------------------------------
+
+  ALTER TABLE "PROVEE" ADD CONSTRAINT "PROVEE_PK" PRIMARY KEY ("PROVEEDOR", "PRODUCTO") ENABLE;
+ 
+  ALTER TABLE "PROVEE" MODIFY ("PROVEEDOR" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PROVEE" MODIFY ("PRODUCTO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PROVEEDOR
+--------------------------------------------------------
+
+  ALTER TABLE "PROVEEDOR" ADD CONSTRAINT "PROVEEDOR_NIF_UN" UNIQUE ("NIF") ENABLE;
+ 
+  ALTER TABLE "PROVEEDOR" ADD CONSTRAINT "PROVEEDOR_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "PROVEEDOR" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PROVEEDOR" MODIFY ("NIF" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PROVEEDOR" MODIFY ("NOMBRE_PROVEEDOR" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PROVEEDOR" MODIFY ("RESPONSABLE_EMPRESA" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PROVEEDOR" MODIFY ("TELEFONO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "PROVEEDOR" MODIFY ("EMAIL" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table REPONE
+--------------------------------------------------------
+
+  ALTER TABLE "REPONE" ADD CONSTRAINT "REPONE_PK" PRIMARY KEY ("EMPLEADO", "PASILLO") ENABLE;
+ 
+  ALTER TABLE "REPONE" MODIFY ("EMPLEADO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "REPONE" MODIFY ("PASILLO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table RETENCION
+--------------------------------------------------------
+
+  ALTER TABLE "RETENCION" ADD CONSTRAINT "RETENCION_PK" PRIMARY KEY ("ID") ENABLE;
+ 
+  ALTER TABLE "RETENCION" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "RETENCION" MODIFY ("NOMBRE" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table RETENCIONES
+--------------------------------------------------------
+
+  ALTER TABLE "RETENCIONES" ADD CONSTRAINT "RETENCIONES_PK" PRIMARY KEY ("CAT_EMPLEADO", "RETENCION") ENABLE;
+ 
+  ALTER TABLE "RETENCIONES" MODIFY ("CAT_EMPLEADO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "RETENCIONES" MODIFY ("RETENCION" NOT NULL ENABLE);
+ 
+  ALTER TABLE "RETENCIONES" MODIFY ("PORCENTAJE" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table REVISION
+--------------------------------------------------------
+
+  ALTER TABLE "REVISION" ADD CONSTRAINT "PK_REVISION" PRIMARY KEY ("FECHA", "CODIGO_BARRAS") ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SUPERVISA
+--------------------------------------------------------
+
+  ALTER TABLE "SUPERVISA" ADD CONSTRAINT "SUPERVISAV1_PK" PRIMARY KEY ("EMPLEADO", "EQUIPO") ENABLE;
+ 
+  ALTER TABLE "SUPERVISA" MODIFY ("EMPLEADO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "SUPERVISA" MODIFY ("EQUIPO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TICKET
+--------------------------------------------------------
+
+  ALTER TABLE "TICKET" MODIFY ("ID" NOT NULL ENABLE);
+ 
+  ALTER TABLE "TICKET" MODIFY ("FECHA_PEDIDO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "TICKET" MODIFY ("EMPLEADO" NOT NULL ENABLE);
+ 
+  ALTER TABLE "TICKET" ADD CONSTRAINT "TICKET_PK" PRIMARY KEY ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CATEGORIA
+--------------------------------------------------------
+
+  ALTER TABLE "CATEGORIA" ADD CONSTRAINT "CATEGORIA_IVA_FK" FOREIGN KEY ("IVA")
+	  REFERENCES "IVA" ("TIPO_IVA") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table DETALLE
+--------------------------------------------------------
+
+  ALTER TABLE "DETALLE" ADD CONSTRAINT "DETALLE_PRODUCTO_FK" FOREIGN KEY ("PRODUCTO")
+	  REFERENCES "PRODUCTO" ("CODIGO_BARRAS") ENABLE;
+ 
+  ALTER TABLE "DETALLE" ADD CONSTRAINT "DETALLE_TICKET_FK" FOREIGN KEY ("TICKET")
+	  REFERENCES "TICKET" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EMPLEADO
+--------------------------------------------------------
+
+  ALTER TABLE "EMPLEADO" ADD CONSTRAINT "EMPLEADO_CAT_EMPLEADO_FK" FOREIGN KEY ("CAT_EMPLEADO")
+	  REFERENCES "CAT_EMPLEADO" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table ENTREGA
+--------------------------------------------------------
+
+  ALTER TABLE "ENTREGA" ADD CONSTRAINT "ENTREGA_CLIENTE_FK" FOREIGN KEY ("CLIENTE")
+	  REFERENCES "CLIENTE" ("DNI") ENABLE;
+ 
+  ALTER TABLE "ENTREGA" ADD CONSTRAINT "ENTREGA_TICKET_FK" FOREIGN KEY ("TICKET")
+	  REFERENCES "TICKET" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EQUIPO
+--------------------------------------------------------
+
+  ALTER TABLE "EQUIPO" ADD CONSTRAINT "EQUIPO_MOBILIARIO_FK" FOREIGN KEY ("ID")
+	  REFERENCES "MOBILIARIO" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FACTURA
+--------------------------------------------------------
+
+  ALTER TABLE "FACTURA" ADD CONSTRAINT "FACTURA_CLIENTE_FK" FOREIGN KEY ("CLIENTE")
+	  REFERENCES "CLIENTE" ("DNI") ENABLE;
+ 
+  ALTER TABLE "FACTURA" ADD CONSTRAINT "FACTURA_TICKET_FK" FOREIGN KEY ("ID")
+	  REFERENCES "TICKET" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table FIDELIZADO
+--------------------------------------------------------
+
+  ALTER TABLE "FIDELIZADO" ADD CONSTRAINT "FIDELIZADO_CLIENTE_FK" FOREIGN KEY ("DNI")
+	  REFERENCES "CLIENTE" ("DNI") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table HISTORICO_OFERTA
+--------------------------------------------------------
+
+  ALTER TABLE "HISTORICO_OFERTA" ADD CONSTRAINT "HISTORICO_OFERTA_OFERTA_FK" FOREIGN KEY ("OFERTA")
+	  REFERENCES "OFERTA" ("ID") ENABLE;
+ 
+  ALTER TABLE "HISTORICO_OFERTA" ADD CONSTRAINT "HISTORICO_OFERTA_PRODUCTO_FK" FOREIGN KEY ("PRODUCTO")
+	  REFERENCES "PRODUCTO" ("CODIGO_BARRAS") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table HISTORICO_PRECIO
+--------------------------------------------------------
+
+  ALTER TABLE "HISTORICO_PRECIO" ADD CONSTRAINT "HISTORICO_PRECIO_PRODUCTO_FK" FOREIGN KEY ("PRODUCTO")
+	  REFERENCES "PRODUCTO" ("CODIGO_BARRAS") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table LOTE
+--------------------------------------------------------
+
+  ALTER TABLE "LOTE" ADD CONSTRAINT "LOTE_MOBILIARIO_FK" FOREIGN KEY ("MOBILIARIO")
+	  REFERENCES "MOBILIARIO" ("ID") ENABLE;
+ 
+  ALTER TABLE "LOTE" ADD CONSTRAINT "LOTE_PRODUCTO_FK" FOREIGN KEY ("PRODUCTO")
+	  REFERENCES "PRODUCTO" ("CODIGO_BARRAS") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table MOBILIARIO
+--------------------------------------------------------
+
+  ALTER TABLE "MOBILIARIO" ADD CONSTRAINT "MOBILIARIO_PASILLO_FK" FOREIGN KEY ("PASILLO")
+	  REFERENCES "PASILLO" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table NOMINA
+--------------------------------------------------------
+
+  ALTER TABLE "NOMINA" ADD CONSTRAINT "NOMINA_EMPLEADO_FK" FOREIGN KEY ("EMPLEADO")
+	  REFERENCES "EMPLEADO" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PRODUCTO
+--------------------------------------------------------
+
+  ALTER TABLE "PRODUCTO" ADD CONSTRAINT "PRODUCTO_CATEGORIA_FK" FOREIGN KEY ("CATEGORIA")
+	  REFERENCES "CATEGORIA" ("ID") ENABLE;
+ 
+  ALTER TABLE "PRODUCTO" ADD CONSTRAINT "PRODUCTO_OFERTA_FK" FOREIGN KEY ("OFERTA")
+	  REFERENCES "OFERTA" ("ID") ENABLE;
+ 
+  ALTER TABLE "PRODUCTO" ADD CONSTRAINT "PRODUCTO_PASILLO_FK" FOREIGN KEY ("PASILLO")
+	  REFERENCES "PASILLO" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PROVEE
+--------------------------------------------------------
+
+  ALTER TABLE "PROVEE" ADD CONSTRAINT "PROVEE_PRODUCTO_FK" FOREIGN KEY ("PRODUCTO")
+	  REFERENCES "PRODUCTO" ("CODIGO_BARRAS") ENABLE;
+ 
+  ALTER TABLE "PROVEE" ADD CONSTRAINT "PROVEE_PROVEEDOR_FK" FOREIGN KEY ("PROVEEDOR")
+	  REFERENCES "PROVEEDOR" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table REPONE
+--------------------------------------------------------
+
+  ALTER TABLE "REPONE" ADD CONSTRAINT "REPONE_EMPLEADO_FK" FOREIGN KEY ("EMPLEADO")
+	  REFERENCES "EMPLEADO" ("ID") ENABLE;
+ 
+  ALTER TABLE "REPONE" ADD CONSTRAINT "REPONE_PASILLO_FK" FOREIGN KEY ("PASILLO")
+	  REFERENCES "PASILLO" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table RETENCIONES
+--------------------------------------------------------
+
+  ALTER TABLE "RETENCIONES" ADD CONSTRAINT "RETENCIONES_CAT_EMPLEADO_FK" FOREIGN KEY ("CAT_EMPLEADO")
+	  REFERENCES "CAT_EMPLEADO" ("ID") ENABLE;
+ 
+  ALTER TABLE "RETENCIONES" ADD CONSTRAINT "RETENCIONES_RETENCION_FK" FOREIGN KEY ("RETENCION")
+	  REFERENCES "RETENCION" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table SUPERVISA
+--------------------------------------------------------
+
+  ALTER TABLE "SUPERVISA" ADD CONSTRAINT "SUPERVISAV1_EMPLEADO_FK" FOREIGN KEY ("EMPLEADO")
+	  REFERENCES "EMPLEADO" ("ID") ENABLE;
+ 
+  ALTER TABLE "SUPERVISA" ADD CONSTRAINT "SUPERVISAV1_EQUIPO_FK" FOREIGN KEY ("EQUIPO")
+	  REFERENCES "EQUIPO" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TICKET
+--------------------------------------------------------
+
+  ALTER TABLE "TICKET" ADD CONSTRAINT "TICKET_EMPLEADO_FK" FOREIGN KEY ("EMPLEADO")
+	  REFERENCES "EMPLEADO" ("ID") ENABLE;
+ 
+  ALTER TABLE "TICKET" ADD CONSTRAINT "TICKET_FIDELIZADO_FK" FOREIGN KEY ("FIDELIZADO")
+	  REFERENCES "FIDELIZADO" ("DNI") ENABLE;

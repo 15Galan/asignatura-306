@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://wadl.dev.java.net/2009/02">
+    <doc xmlns:jersey="http://jersey.java.net/" jersey:generatedBy="Jersey: 2.10.4 2014-08-08 15:09:00"/>
+    <doc xmlns:jersey="http://jersey.java.net/" jersey:hint="This is simplified WADL with user and core resources only. To get full WADL with extended resources use the query parameter detail. Link: http://localhost:8282/AgendaEE-war/rs/application.wadl?detail=true"/>
+    <grammars>
+        <include href="application.wadl/xsd0.xsd">
+            <doc title="Generated" xml:lang="en"/>
+        </include>
+    </grammars>
+    <resources base="http://localhost:8282/AgendaEE-war/rs/">
+        <resource path="agenda">
+            <resource path="contactos">
+                <method id="getContactos" name="GET">
+                    <request>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="User-auth" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="text/xml"/>
+                        <representation mediaType="application/xml"/>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+                <method id="postContacto" name="POST">
+                    <request>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="User-auth" style="header" type="xs:string"/>
+                        <ns2:representation xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" element="contacto" mediaType="application/json"/>
+                        <ns2:representation xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" element="contacto" mediaType="application/xml"/>
+                        <ns2:representation xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" element="contacto" mediaType="text/xml"/>
+                    </request>
+                    <response>
+                        <representation mediaType="*/*"/>
+                    </response>
+                </method>
+            </resource>
+            <resource path="contacto/{id: [0-9]+}">
+                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="id" style="template" type="xs:long"/>
+                <method id="deleteContacto" name="DELETE">
+                    <request>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="User-auth" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="text/xml"/>
+                        <representation mediaType="application/xml"/>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+                <method id="getContacto" name="GET">
+                    <request>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="User-auth" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="text/xml"/>
+                        <representation mediaType="application/xml"/>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+                <method id="putContacto" name="PUT">
+                    <request>
+                        <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="User-auth" style="header" type="xs:string"/>
+                    </request>
+                    <response>
+                        <representation mediaType="text/xml"/>
+                        <representation mediaType="application/xml"/>
+                        <representation mediaType="application/json"/>
+                    </response>
+                </method>
+            </resource>
+        </resource>
+    </resources>
+</application>

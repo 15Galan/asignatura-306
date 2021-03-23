@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>
+            <c:choose> 
+                <c:when test="#{contactos.autorizadoParaEdicion}">
+                    <h:outputText value="#{contactos.accion} contacto"/>
+                </c:when>
+                <c:otherwise>
+                    Acceso irregular
+                </c:otherwise>
+            </c:choose>
+        </title>
+    </h:head>
+    <h:body>
+
+        <c:choose> 
+            <c:when test="#{contactos.autorizadoParaEdicion}">
+                <h1>#{contactos.accion} contacto</h1>
+                <h:form id="contacto">
+                    <h:panelGrid columns="3">
+                        <h:outputText value="Nombre"/>
+                        <h:inputText id ="nombre" value="#{contactos.contacto.nombre}"/>
+                        <h:message for="nombre"/>
+
+                        <h:outputText value="Teléfono"/>
+                        <h:inputText id ="telefono" value="#{contactos.contacto.telefono}"/>
+                        <h:message for="telefono"/>
+
+                        <h:outputText value="e-mail"/>
+                        <h:inputText id ="email" value="#{contactos.contacto.email}"/>
+                        <h:message for="email"/>
+
+                        <h:commandButton value="#{contactos.accion}" action="#{contactos.ejecutarAccion()}"/>
+                        <h:commandButton value="Cancelar" action="contactos.xhtml"/>
+
+                        <h:inputHidden value="#{contactos.modo}"/>
+                        <h:inputHidden value="#{contactos.contacto.id}"/>
+
+                    </h:panelGrid>
+                </h:form>
+            </c:when>
+            <c:otherwise>
+                <p>No está autorizado para ver esta página.</p>
+            </c:otherwise>
+        </c:choose>
+
+    </h:body>
+</html>
+

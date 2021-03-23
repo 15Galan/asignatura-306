@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Lista de contactos</title>
+    </h:head>
+    <h:body>
+        <c:choose>
+            <c:when test="#{empty infoSesion.usuario}">
+                <p>No tiene autorización para ver esta página, debe autenticarse antes.</p>
+            </c:when>
+            <c:otherwise>
+                <h:form id="contactos">
+                    <h:dataTable value="#{infoSesion.contactos}" var="c">
+                        <h:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            <h:outputText value="#{c.nombre}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">Teléfono</f:facet>
+                            <h:outputText value="#{c.telefono}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <f:facet name="header">e-mail</f:facet>
+                            <h:outputText value="#{c.email}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <h:commandButton value="Modificar" action="#{contactos.modificar(c)}"/>
+                        </h:column>
+                        
+                        <h:column>
+                            <h:commandButton value="Eliminar" action="#{contactos.eliminar(c)}"/>
+                        </h:column>
+                    </h:dataTable>
+                    <h:commandButton value="Insertar" action="#{contactos.insertarContacto()}"/>
+                    <p><h:commandLink action="#{infoSesion.invalidarSesion()}">Log out</h:commandLink></p>
+                </h:form>
+            </c:otherwise>
+        </c:choose>
+
+    </h:body>
+</html>
+
